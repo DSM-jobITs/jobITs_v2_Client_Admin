@@ -2,11 +2,11 @@ import React, { ReactNode } from "react";
 import Navbar from "../Navbar";
 import * as S from "./PageTemplate.style";
 
-interface EmployRequestPageTemplateProps {
+interface PageTemplateProps {
   children?: ReactNode;
 }
 
-const EmployRequestPageTemplate = ({ children }: EmployRequestPageTemplateProps) => {
+const PageTemplate = ({ children }: PageTemplateProps) => {
   return (
     <S.Container flex={true}>
       <Navbar></Navbar>
@@ -17,4 +17,4 @@ const EmployRequestPageTemplate = ({ children }: EmployRequestPageTemplateProps)
   );
 };
 
-export default EmployRequestPageTemplate;
+export default PageTemplate;
