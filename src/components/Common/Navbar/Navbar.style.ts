@@ -7,6 +7,7 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 1.8rem 2rem;
+  z-index : 1;
 `;
 
 export const Container = styled.div<{ flex?: boolean }>`
