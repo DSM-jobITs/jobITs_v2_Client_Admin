@@ -1,8 +1,20 @@
 import React from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import * as S from "./RecruitNotice.style";
 interface SecondRecruitProps {}
 
 const SecondRecruit = ({}: SecondRecruitProps) => {
+    const location = useLocation();
+    const history = useHistory();
+    const locationPage = location.pathname.split("/");
+    const page = Number(locationPage[2]) + 1;
+
+    const toNextRecruit = () => {
+        history.push({
+            pathname : `recruit/${page}`
+        });
+    };
+
   return (
     <>
       <S.AllContainer>
@@ -25,7 +37,7 @@ const SecondRecruit = ({}: SecondRecruitProps) => {
               </S.Container>
             </S.InnerContainer>
           </S.RecruitContainer>
-          <S.NextButton>다음</S.NextButton>
+          <S.NextButton onClick={toNextRecruit}>다음</S.NextButton>
         </S.Container>
       </S.AllContainer>
     </>
