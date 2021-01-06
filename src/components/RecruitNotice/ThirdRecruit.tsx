@@ -1,8 +1,20 @@
 import React from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import * as S from "./RecruitNotice.style";
 interface ThirdRecruitProps {}
 
 const ThirdRecruit = ({}: ThirdRecruitProps) => {
+    const location = useLocation();
+    const history = useHistory();
+    const locationPage = location.pathname.split("/");
+    const page = Number(locationPage[2]) + 1;
+
+    const toNextRecruit = () => {
+        history.push({
+            pathname : `recruit/${page}`
+        });
+    };
+    
   return (
     <>
     <S.AllContainer big={true}>
@@ -50,7 +62,7 @@ const ThirdRecruit = ({}: ThirdRecruitProps) => {
             {/* <S.InputLine type="text"></S.InputLine> */}
             </S.InnerContainer>
         </S.RecruitContainer>
-        <S.NextButton>다음</S.NextButton>
+        <S.NextButton onClick={toNextRecruit}>다음</S.NextButton>
       </S.Container>
       </S.AllContainer>
     </>
