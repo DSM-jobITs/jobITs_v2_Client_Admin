@@ -12,6 +12,7 @@ export const EmployContainer = styled.section`
 
 export const Container = styled.div<{ flex?: boolean }>`
   display: ${(props) => (props.flex ? "flex" : "")};
+  justify-content: space-between;
 `;
 
 export const Title = styled.h1`
@@ -53,7 +54,6 @@ export const AddButton = styled.button`
   font-size: 0.9rem;
   box-shadow: 0px 3px 6px #00000018;
   color: white;
-  float: right;
   margin-top: 3rem;
   outline: none;
   cursor: pointer;
@@ -68,3 +68,34 @@ export const AddButton = styled.button`
     transition: 0.3s;
   }
 `;
+
+export const PageNationBox = styled.div`
+  display: flex;
+  border: 1px solid #b7b7b8;
+  width: 17rem;
+  border-radius: 0.7rem;
+  margin-top: 3rem;
+`;
+
+export const PageNationItem = styled.div<{ last?: boolean }>`
+  width: 1rem;
+  height: 1rem;
+  padding: 0.7rem;
+  text-align: center;
+  border-right: ${(props) => (props.last ? "" : "1px solid #b7b7b8;")};
+  cursor: pointer;
+
+  &:hover {
+    background-color: #349a07;
+    transition: 0.3s;
+    color: white;
+  }
+
+  &:active {
+    background-color: #28640d;
+    color: white;
+    transition: 0.2s;
+  }
+`;
+
+export const ArrowImg = styled.img``;
