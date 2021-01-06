@@ -28,6 +28,11 @@ export const EmployBox = styled.div<{ company?: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: ${(props) => (props.company ? "0.5rem 2.8rem 0.5rem 4rem" : "0.5rem 4rem")};
+  cursor: ${(props) => (props.company ? "pointer" : "")};
+  &:hover {
+    background-color: ${(props) => (props.company ? "#fbfbfb" : "")};
+    transition: ${(props) => (props.company ? "0.3s" : "")};
+  }
 `;
 
 export const TitleText = styled.p`
@@ -59,7 +64,7 @@ export const AddButton = styled.button`
   }
 
   &:active {
-    background-color: #28640D;
+    background-color: #28640d;
     transition: 0.3s;
   }
 `;
