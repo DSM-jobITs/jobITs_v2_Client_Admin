@@ -1,26 +1,32 @@
 import React from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, Link } from "react-router-dom";
+import { logo } from "../../assets/img";
 import * as S from "./RecruitNotice.style";
 
 interface FirstRecruitProps {}
 
 const FirstRecruit = ({}: FirstRecruitProps) => {
-    const location = useLocation();
+    // const location = useLocation();
     const history = useHistory();
-    const locationPage = location.pathname.split("/");
-    const page = Number(locationPage[2]) + 1;
+    // const locationPage = location.pathname.split("/");
+    // const page = Number(locationPage[2]) + 1;
 
     const toNextRecruit = () => {
         history.push({
-            pathname : `recruit/${page}`
+            pathname : `second-recruit`
         });
     };
     
 
   return (
-    <>
     <S.AllContainer big={true}>
     <S.Container>
+        <Link
+            style={{ textDecoration: "none" }}
+            to={{
+              pathname: `/employ`,
+            }}
+          ><S.Logo src={logo}></S.Logo></Link>
         <S.RecruitContainer>
             <S.InnerContainer>
             <S.Container flex={true}>
@@ -92,7 +98,6 @@ const FirstRecruit = ({}: FirstRecruitProps) => {
         <S.NextButton onClick={toNextRecruit}>다음</S.NextButton>
       </S.Container>
       </S.AllContainer>
-    </>
   );
 };
 
