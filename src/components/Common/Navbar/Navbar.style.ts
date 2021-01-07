@@ -17,6 +17,7 @@ export const Container = styled.div<{ flex?: boolean }>`
 
 export const LogoImg = styled.img`
   margin-bottom: 3.5rem;
+  cursor : pointer;
 `;
 
 export const NavMenu = styled.h3`

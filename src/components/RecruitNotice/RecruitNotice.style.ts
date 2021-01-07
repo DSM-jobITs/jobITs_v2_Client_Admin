@@ -113,3 +113,7 @@ export const TextArea = styled.textarea`
   border: 1px solid #aeaeae;
   box-shadow: 0px 2px 6px #72727245;
 `;
+
+export const Logo = styled.img`
+ margin : 1rem 0;
+`;
