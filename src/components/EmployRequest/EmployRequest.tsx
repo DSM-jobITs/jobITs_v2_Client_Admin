@@ -33,7 +33,7 @@ const EmployRequest = ({}: EmployRequestProps) => {
           <Link
             style={{ textDecoration: "none" }}
             to={{
-              pathname: `recruit/1`,
+              pathname: `/first-recruit`,
             }}
           >
             <S.AddButton>기업 추가</S.AddButton>

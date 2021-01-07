@@ -1,5 +1,6 @@
 import React from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, Link } from "react-router-dom";
+import { logo } from "../../assets/img";
 import * as S from "./RecruitNotice.style";
 interface FourthRecruitProps {}
 
@@ -11,13 +12,18 @@ const FourthRecruit = ({}: FourthRecruitProps) => {
 
     const toNextRecruit = () => {
         history.push({
-            pathname : `recruit/${page}`
+            pathname : `/employ`
         });
     };
   return (
-    <>
     <S.AllContainer>
         <S.Container>
+        <Link
+            style={{ textDecoration: "none" }}
+            to={{
+              pathname: `/employ`,
+            }}
+          ><S.Logo src={logo}></S.Logo></Link>
         <S.RecruitContainer height={true}>
             <S.InnerContainer>
             <S.Container flex={true}>
@@ -43,10 +49,9 @@ const FourthRecruit = ({}: FourthRecruitProps) => {
             </S.InputList>
             </S.InnerContainer>
         </S.RecruitContainer>
-        <S.NextButton onClick={toNextRecruit}>다음</S.NextButton>
+        <S.NextButton onClick={toNextRecruit}>등록하기</S.NextButton>
         </S.Container>
     </S.AllContainer>
-    </>
   );
 };
 
