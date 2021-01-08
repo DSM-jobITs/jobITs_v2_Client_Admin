@@ -10,8 +10,9 @@ export const EmployContainer = styled.section`
   margin: 0 auto;
 `;
 
-export const Container = styled.div<{ flex?: boolean }>`
+export const Container = styled.div<{ flex?: boolean; company?: boolean }>`
   display: ${(props) => (props.flex ? "flex" : "")};
+  cursor: ${(props) => (props.company ? "pointer" : "")};
   justify-content: space-between;
 `;
 
@@ -28,16 +29,17 @@ export const EmployBox = styled.div<{ company?: boolean }>`
   border-bottom: 1px solid #e5e5e5;
   display: flex;
   justify-content: space-between;
-  padding: ${(props) => (props.company ? "0.5rem 2.8rem 0.5rem 4rem" : "0.5rem 4rem")};
-  cursor: ${(props) => (props.company ? "pointer" : "")};
+  padding: ${(props) => (props.company ? "0.5rem 2.8rem 0.5rem 4rem" : "0.5rem 9rem 0 4rem")};
+
   &:hover {
     background-color: ${(props) => (props.company ? "#fbfbfb" : "")};
     transition: ${(props) => (props.company ? "0.3s" : "")};
   }
 `;
 
-export const TitleText = styled.p`
+export const TitleText = styled.p<{ date?: boolean }>`
   color: #707070;
+  margin-right: ${(props) => (props.date ? "1.5rem" : "")};
 `;
 
 export const CompanyText = styled.p`
@@ -54,7 +56,7 @@ export const AddButton = styled.button`
   font-size: 0.9rem;
   box-shadow: 0px 3px 6px #00000018;
   color: white;
-  margin-top: 3rem;
+  margin: 3rem 0 0 1.7rem;
   outline: none;
   cursor: pointer;
 
@@ -65,7 +67,21 @@ export const AddButton = styled.button`
 
   &:active {
     background-color: #28640d;
-    transition: 0.3s;
+    transition: 0.2s;
+  }
+`;
+
+export const SaveButton = styled(AddButton)`
+  border: 1px solid #349a07;
+  color: #349a07;
+  background-color: white;
+
+  &:hover {
+    color: white;
+  }
+
+  &:active {
+    color: white;
   }
 `;
 
@@ -98,4 +114,17 @@ export const PageNationItem = styled.div<{ last?: boolean }>`
   }
 `;
 
-export const ArrowImg = styled.img``;
+export const Img = styled.img<{ delete?: boolean }>`
+  opacity: 0.7;
+  margin-right: ${(props) => (props.delete ? "1rem" : "")};
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export const ImgContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
