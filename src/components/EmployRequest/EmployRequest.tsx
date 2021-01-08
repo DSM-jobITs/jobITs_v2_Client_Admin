@@ -8,7 +8,6 @@ interface EmployRequestProps {}
 
 const EmployRequest = ({}: EmployRequestProps) => {
   return (
-    <>
       <PageTemplate>
         <S.EmployContainer>
           <S.Container>
@@ -51,7 +50,6 @@ const EmployRequest = ({}: EmployRequestProps) => {
           </S.Container>
         </S.Container>
       </PageTemplate>
-    </>
   );
 };
 

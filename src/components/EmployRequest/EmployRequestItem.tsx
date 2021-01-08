@@ -22,7 +22,14 @@ const EmployRequestItem = ({}: EmployRequestItemProps) => {
         <S.ImgContainer>
           <S.TitleText date={true}>2021/01/06</S.TitleText>
           <S.Img src={deleteIcon} delete={true}></S.Img>
-          <S.Img src={addIcon}></S.Img>
+          <Link
+            style={{ textDecoration: "none" }}
+            to={{
+              pathname: `/edit/:id`,
+            }}
+          >
+            <S.Img src={addIcon}></S.Img>
+          </Link>
         </S.ImgContainer>
       </S.EmployBox>
     </S.Container>
