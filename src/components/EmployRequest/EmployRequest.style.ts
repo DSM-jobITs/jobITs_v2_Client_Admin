@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EmployContainer = styled.section`
+export const EmployContainer = styled.section<{ scroll?: boolean }>`
   display: flex;
   justify-content: center;
   box-shadow: 0px 3px 6px #00000018;
@@ -8,6 +8,7 @@ export const EmployContainer = styled.section`
   height: 42rem;
   border: 1px solid #e7e7e7;
   margin: 0 auto;
+  overflow : ${(props) => (props.scroll ? "scroll" : "")};
 `;
 
 export const Container = styled.div<{ flex?: boolean; company?: boolean }>`
