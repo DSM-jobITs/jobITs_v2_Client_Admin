@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { FirstRecruit, SecondRecruit, ThirdRecruit, FourthRecruit, EmployRequest, Login, DetailEmploy } from "./components/index";
+import { FirstRecruit, SecondRecruit, ThirdRecruit, FourthRecruit, EmployRequest, Login, DetailEmploy, TemporarySave } from "./components/index";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
           <Route exact path="/employ" render={() => <EmployRequest />} />
           <Route exact path="/employ/:id" render={() => <DetailEmploy />} />
           <Route exact path="/" render={() => <Login />} />
+          <Route exact path="/save" render={() => <TemporarySave />} />
         </Switch>
       </Router>
     </div>
