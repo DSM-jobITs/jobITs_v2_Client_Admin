@@ -11,7 +11,7 @@ const EmployRequest = ({}: EmployRequestProps) => {
       <PageTemplate>
         <S.EmployContainer>
           <S.Container>
-            <EmployRequestTitleBox />
+            <EmployRequestTitleBox title={"채용 의뢰"}/>
             <EmployRequestItem />
           </S.Container>
         </S.EmployContainer>
