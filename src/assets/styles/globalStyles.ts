@@ -9,9 +9,6 @@ const GlobalStyle = createGlobalStyle`
     overflow : scroll;
     font-family: 'AppleSDGothic', 'sans-serif';
   }
-  * {
-    box-sizing: bordeer-box;
-  }
 `;
 
 export default GlobalStyle;

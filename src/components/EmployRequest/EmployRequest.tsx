@@ -8,18 +8,17 @@ interface EmployRequestProps {}
 
 const EmployRequest = ({}: EmployRequestProps) => {
   return (
-    <>
       <PageTemplate>
         <S.EmployContainer>
           <S.Container>
-            <EmployRequestTitleBox />
+            <EmployRequestTitleBox title={"채용 의뢰"}/>
             <EmployRequestItem />
           </S.Container>
         </S.EmployContainer>
         <S.Container flex={true}>
           <S.PageNationBox>
             <S.PageNationItem>
-              <S.ArrowImg src={arrowBack}></S.ArrowImg>
+              <S.Img src={arrowBack}></S.Img>
             </S.PageNationItem>
             <S.PageNationItem>1</S.PageNationItem>
             <S.PageNationItem>2</S.PageNationItem>
@@ -27,20 +26,30 @@ const EmployRequest = ({}: EmployRequestProps) => {
             <S.PageNationItem>4</S.PageNationItem>
             <S.PageNationItem>5</S.PageNationItem>
             <S.PageNationItem last={true}>
-              <S.ArrowImg src={arrowForward}></S.ArrowImg>
+              <S.Img src={arrowForward}></S.Img>
             </S.PageNationItem>
           </S.PageNationBox>
-          <Link
-            style={{ textDecoration: "none" }}
-            to={{
-              pathname: `/first-recruit`,
-            }}
-          >
-            <S.AddButton>기업 추가</S.AddButton>
-          </Link>
+          <S.Container>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={{
+                pathname: `/save`,
+              }}
+            >
+              <S.SaveButton>임시저장 보기</S.SaveButton>
+            </Link>
+
+            <Link
+              style={{ textDecoration: "none" }}
+              to={{
+                pathname: `/first-recruit`,
+              }}
+            >
+              <S.AddButton>기업 추가</S.AddButton>
+            </Link>
+          </S.Container>
         </S.Container>
       </PageTemplate>
-    </>
   );
 };
 
