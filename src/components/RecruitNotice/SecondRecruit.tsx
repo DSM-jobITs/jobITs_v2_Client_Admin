@@ -1,5 +1,6 @@
 import React from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, Link } from "react-router-dom";
+import { logo } from "../../assets/img";
 import * as S from "./RecruitNotice.style";
 interface SecondRecruitProps {}
 
@@ -11,7 +12,7 @@ const SecondRecruit = ({}: SecondRecruitProps) => {
 
     const toNextRecruit = () => {
         history.push({
-            pathname : `recruit/${page}`
+            pathname : `/third-recruit`
         });
     };
 
@@ -19,6 +20,12 @@ const SecondRecruit = ({}: SecondRecruitProps) => {
     <>
       <S.AllContainer>
         <S.Container>
+        <Link
+            style={{ textDecoration: "none" }}
+            to={{
+              pathname: `/employ`,
+            }}
+          ><S.Logo src={logo}></S.Logo></Link>
           <S.RecruitContainer height={true}>
             <S.InnerContainer>
               <S.Container flex={false}>
