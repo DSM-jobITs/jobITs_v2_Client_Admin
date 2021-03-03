@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const AllContainer = styled.div<{big? : boolean}>`
+export const AllContainer = styled.div<{ big?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  height : ${(props) => (props.big ? "100%" : "100vh")};
+  height: 100%;
   background-color: #eeeeee;
 `;
 
@@ -47,6 +47,7 @@ export const RecruitContainer = styled(AllContainer)<{ height?: boolean }>`
   padding: 5rem;
   width: 57rem;
   height: ${(props) => (props.height ? "30rem" : "44.5rem")};
+  margin-bottom: 4rem;
 `;
 
 export const InputList = styled.span`
@@ -60,7 +61,9 @@ export const Input = styled.input<{ type: string }>`
   text-align: left;
 `;
 
-export const Text = styled.p``;
+export const Text = styled.p<{ white?: boolean }>`
+  color: ${(props) => (props.white ? "white" : "")};
+`;
 
 export const InputLine = styled.input<{ width?: string }>`
   border: none;
@@ -71,7 +74,7 @@ export const InputLine = styled.input<{ width?: string }>`
 `;
 
 export const SearchButton = styled.button`
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   border: 1px solid #449734;
   color: #449734;
   background-color: white;
@@ -86,12 +89,18 @@ export const SearchButton = styled.button`
   }
 `;
 
-export const NextButton = styled(SearchButton)`
+export const ButtonContainer = styled.div`
+  display: flex;
   float: right;
-  margin: 1.5rem 0 1.5rem 0;
-  background-color: #449734;
+`;
+
+export const NextButton = styled(SearchButton)`
+  margin: 0 0 3rem 1.3rem;
+  padding: 0.6rem 2rem;
+  background-color: #006004;
+  border: none;
+  font-size: 0.9rem;
   color: white;
-  opacity: 0.7;
   font-weight: 500;
   box-shadow: 0px 2px 6px #72727245;
   &:hover {
@@ -100,9 +109,13 @@ export const NextButton = styled(SearchButton)`
   }
   &:active {
     background-color: green;
-    padding: 0.5rem 2.1rem;
+    padding: 0.65rem 2.1rem;
     transition: 0.3s;
   }
+`;
+
+export const CancelButton = styled(NextButton)`
+  background-color: #349a07;
 `;
 
 export const TextArea = styled.textarea`
@@ -115,5 +128,32 @@ export const TextArea = styled.textarea`
 `;
 
 export const Logo = styled.img`
- margin : 1rem 0;
+  margin: 1rem 0;
+`;
+
+export const FileUploadContainer = styled.div`
+  background-color: #378913;
+  box-shadow: 3px 2px 6px #72727216;
+  width: 62rem;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1.6rem;
+  margin-bottom: 2.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const FileUploadBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const FileButton = styled.button`
+  background-color: #f5f5f5;
+  color: #6a5657;
+  border: none;
+  border-radius: 5%;
+  padding: 0.6rem 1rem;
+  height: 2.3rem;
+  margin-right: 1rem;
 `;
