@@ -11,7 +11,7 @@ const EmployRequest = ({}: EmployRequestProps) => {
       <PageTemplate>
         <S.EmployContainer>
           <S.Container>
-            <EmployRequestTitleBox />
+            <EmployRequestTitleBox title={"채용 의뢰"}/>
             <EmployRequestItem />
           </S.Container>
         </S.EmployContainer>
@@ -42,7 +42,7 @@ const EmployRequest = ({}: EmployRequestProps) => {
             <Link
               style={{ textDecoration: "none" }}
               to={{
-                pathname: `/first-recruit`,
+                pathname: `/recruit`,
               }}
             >
               <S.AddButton>기업 추가</S.AddButton>
