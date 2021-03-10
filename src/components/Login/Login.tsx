@@ -1,10 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import * as S from "./Login.style";
 import { loginImg } from "../../assets/img";
-interface LoginProps {}
+interface LoginProps {
+  onLogin: (id: string, password: string) => void;
+}
 
-const Login = ({}: LoginProps) => {
+const Login = ({ onLogin }: LoginProps) => {
+  const onSubmitLogin = () => onLogin(id, password);
+  const [inputs, setInputs] = useState({
+    id: "",
+    password: "",
+  });
+  const { id, password } = inputs;
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
   return (
     <S.LoginContainer>
       <S.LoginImg src={loginImg}></S.LoginImg>
@@ -12,16 +28,18 @@ const Login = ({}: LoginProps) => {
         <S.Title>LOGIN</S.Title>
         <S.DescriptionText>Welcome to JobITs</S.DescriptionText>
         <S.Text>Log in to JobITs and use various features.</S.Text>
-        <S.Input placeholder="id"></S.Input>
-        <S.Input placeholder="password" type="password"></S.Input>
-        <Link
-          style={{ textDecoration: "none" }}
-          to={{
-            pathname: `/employ`,
-          }}
-        >
-          <S.Button>login</S.Button>
-        </Link>
+        <form>
+          <S.Input placeholder="id" autoComplete="username" name="id" onChange={onChangeInput}></S.Input>
+          <S.Input
+            placeholder="password"
+            autoComplete="current-password"
+            name="password"
+            onChange={onChangeInput}
+            value={password}
+            type="password"
+          ></S.Input>
+        </form>
+        <S.Button onClick={onSubmitLogin}>login</S.Button>
       </S.Container>
     </S.LoginContainer>
   );
