@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { RecruitNotice, EmployRequest, Login, DetailEmploy, TemporarySave } from "./components/index";
+import { RecruitNotice, EmployRequest, Login, DetailEmploy, TemporarySave } from "./containers/index";
 
 function App() {
   return (
