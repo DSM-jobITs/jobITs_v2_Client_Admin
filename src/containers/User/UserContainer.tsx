@@ -2,9 +2,8 @@ import React from "react";
 import Login from "../../components/Login/Login";
 import { login } from "../../lib/api/user";
 import { useHistory } from "react-router-dom";
-interface UserContainerProps {}
 
-const UserContainer = ({}: UserContainerProps) => {
+const UserContainer = () => {
   const history = useHistory();
 
   const onSubmitLogin = (id: string, password: string) => {
