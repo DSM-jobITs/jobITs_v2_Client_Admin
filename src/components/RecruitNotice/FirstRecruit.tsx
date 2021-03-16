@@ -122,7 +122,6 @@ const FirstRecruit = ({}: FirstRecruitProps) => {
                 <S.Span>우편번호</S.Span>
               </S.InputList>
               <S.InputLine type="text"></S.InputLine>
-              <S.SearchButton>검색</S.SearchButton>
             </S.Container>
           </S.Container>
           <S.Container>
