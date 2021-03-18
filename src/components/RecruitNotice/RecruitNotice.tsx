@@ -10,7 +10,7 @@ interface RecruitNoticeProps {
 const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNoticeProps) => {
   const onSubmitRecruit = () => {
     onRecruit({
-      personnel: personnel,
+      personnel: Number(sw) + Number(em) + Number(info) + Number(every),
       name: name,
       entNo: entNo,
       phone: phone,
@@ -47,7 +47,10 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNotic
   };
 
   const [inputs, setInputs] = useState({
-    personnel: 0,
+    every: 0,
+    sw: 0,
+    info: 0,
+    em: 0,
     name: "정보 없음",
     entNo: "정보 없음",
     phone: "정보 없음",
@@ -91,7 +94,10 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNotic
   });
 
   const {
-    personnel,
+    sw,
+    em,
+    info,
+    every,
     name,
     entNo,
     phone,
@@ -175,32 +181,32 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNotic
                   <S.Span>모집인원</S.Span>
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="personal" value="sw" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="sw" value="sw" onChange={onCheckBoxInput} />
                   SW 개발과 (
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="text" name="personnel" onChange={onChangeInput} />) 명
+                  <S.Input type="text" name="sw" onChange={onChangeInput} />) 명
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="color" value="em" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="em" value="em" onChange={onCheckBoxInput} />
                   임베디드과 (
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="text" name="personnel" onChange={onChangeInput} />) 명
+                  <S.Input type="text" name="em" onChange={onChangeInput} />) 명
                 </S.InputList>
                 <S.InputList>
                   <S.Input type="checkbox" name="color" value="info" onChange={onCheckBoxInput} />
                   정보보안과 (
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="text" name="personnel" onChange={onChangeInput} />) 명
+                  <S.Input type="text" name="info" onChange={onChangeInput} />) 명
                 </S.InputList>
                 <S.InputList>
                   <S.Input type="checkbox" name="color" value="none" onChange={onCheckBoxInput} />
                   학과무관 (
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="text" name="personnel" onChange={onChangeInput} />) 명
+                  <S.Input type="text" name="every" onChange={onChangeInput} />) 명
                 </S.InputList>
               </S.Container>
               <S.Container flex={true}>
