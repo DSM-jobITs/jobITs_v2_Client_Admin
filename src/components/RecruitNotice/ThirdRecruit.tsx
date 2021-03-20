@@ -77,7 +77,6 @@ const ThirdRecruit = ({}: ThirdRecruitProps) => {
                   <S.Input type="text" />)
                 </S.InputList>
               </S.Container>
-              {/* <S.InputLine type="text"></S.InputLine> */}
             </S.InnerContainer>
           </S.RecruitContainer>
     </>
