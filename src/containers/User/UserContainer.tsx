@@ -2,6 +2,7 @@ import React from "react";
 import Login from "../../components/Login/Login";
 import { login } from "../../lib/api/user";
 import { useHistory } from "react-router-dom";
+import { ErrorToast } from "../../lib/toast";
 interface UserContainerProps {}
 
 const UserContainer = ({}: UserContainerProps) => {
@@ -10,11 +11,12 @@ const UserContainer = ({}: UserContainerProps) => {
   const onSubmitLogin = (id: string, password: string) => {
     login({ id: id, password: password })
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         history.push("/employ");
       })
       .catch((err) => {
-        console.log(err);
+        ErrorToast("로그인에 실패하였습니다.");
       });
   };
 
