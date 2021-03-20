@@ -32,7 +32,7 @@ const GetRecruit = () => {
         setWorkContent(res.data.workContent);
         setCertificate(res.data.qualification.certificate);
         setGrade(res.data.qualification.grade);
-        setSpecialty(res.data.qualification.specialty);
+        setSpecialty(res.data.qualification.speciality);
         setWorkingConditions(res.data.workingConditions);
         setMeal(res.data.workingConditions.meal);
         setWelfare(res.data.workingConditions.welfare);
