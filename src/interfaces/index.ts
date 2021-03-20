@@ -32,3 +32,14 @@ export interface otherObjectProps {
   recruitPlan: boolean;
   reception: string;
 }
+
+export interface EmployRequestListProps {
+  recruitId: string;
+  recruitNo: number;
+  enterprise: enterpriseProps;
+  reception: string;
+}
+
+export interface enterpriseProps {
+  name: string;
+}
