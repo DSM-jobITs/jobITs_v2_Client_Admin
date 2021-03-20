@@ -2,6 +2,7 @@ import React from "react";
 import Login from "../../components/Login/Login";
 import { login } from "../../lib/api/user";
 import { useHistory } from "react-router-dom";
+import { ErrorToast } from "../../lib/toast";
 
 const UserContainer = () => {
   const history = useHistory();
@@ -13,7 +14,7 @@ const UserContainer = () => {
         localStorage.setItem("refreshToken", res.data.refreshToken);
         history.push("/employ");
       })
-      .catch((err) => {
+      .catch(() => {
         ErrorToast("로그인에 실패하였습니다.");
       });
   };
