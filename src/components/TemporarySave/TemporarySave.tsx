@@ -12,7 +12,6 @@ const TemporarySave = ({}: TemporarySaveProps) => {
       <S.EmployContainer>
         <S.Container>
           <EmployRequestTitleBox title={"임시 저장"} />
-          <EmployRequestItem />
         </S.Container>
       </S.EmployContainer>
       <S.Container flex={true}>
