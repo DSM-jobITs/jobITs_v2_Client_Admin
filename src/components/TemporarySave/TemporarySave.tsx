@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PageTemplate from "../Common/PageTemplate/PageTemplate";
 import * as S from "../EmployRequest/EmployRequest.style";
-import { EmployRequestTitleBox, EmployRequestItem } from "../EmployRequest/index";
+import { EmployRequestTitleBox } from "../EmployRequest/index";
 import { arrowBack, arrowForward } from "../../assets/img/index";
-interface TemporarySaveProps {}
 
-const TemporarySave = ({}: TemporarySaveProps) => {
+const TemporarySave = () => {
   return (
     <PageTemplate>
       <S.EmployContainer>
