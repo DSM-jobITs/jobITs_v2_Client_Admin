@@ -22,9 +22,12 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install
-
+          
       - name: Build
-        run: yarn build
+        run: REACT_APP_API_URL=${BASE} REACT_APP_S3_URL=${SRC} yarn build
+        env : 
+          BASE: ${{ secrets.REACT_APP_API_URL }}
+          SRC: ${{ secrets.REACT_APP_S3_URL }}
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
