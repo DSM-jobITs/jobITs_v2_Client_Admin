@@ -21,6 +21,10 @@ const Login = ({ onLogin }: LoginProps) => {
     });
   };
 
+  const onKeyPressLogin = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") onSubmitLogin();
+  };
+
   return (
     <S.LoginContainer>
       <S.LoginImg src={loginImg}></S.LoginImg>
@@ -37,6 +41,7 @@ const Login = ({ onLogin }: LoginProps) => {
             onChange={onChangeInput}
             value={password}
             type="password"
+            onKeyPress={onKeyPressLogin}
           ></S.Input>
         </form>
         <S.Button onClick={onSubmitLogin}>login</S.Button>
