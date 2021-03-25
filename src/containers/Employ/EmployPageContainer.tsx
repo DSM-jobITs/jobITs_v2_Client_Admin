@@ -30,7 +30,7 @@ const EmployPageContainer = () => {
   useEffect(() => {
     getRecruit(page === 0 ? 0 : page - 1)
       .then((res) => {
-        setRecruitList(res.data);
+        setRecruitList(res.data.response);
         res.data.length < 1 ? setText(true) : setText(false);
       })
       .catch((err) => {
