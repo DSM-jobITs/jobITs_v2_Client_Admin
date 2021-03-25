@@ -1,6 +1,10 @@
 import { client } from "./client";
 
 export interface Token {
+  data: TokenData;
+}
+
+interface TokenData {
   accessToken: string;
   refreshToken: string;
 }
