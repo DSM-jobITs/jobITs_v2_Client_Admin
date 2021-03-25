@@ -1,8 +1,7 @@
 import React from "react";
 import * as S from "./RecruitNotice.style";
-interface ThirdRecruitProps {}
 
-const ThirdRecruit = ({}: ThirdRecruitProps) => {
+const ThirdRecruit = () => {
   return (
     <>
           <S.RecruitContainer>
@@ -77,7 +76,6 @@ const ThirdRecruit = ({}: ThirdRecruitProps) => {
                   <S.Input type="text" />)
                 </S.InputList>
               </S.Container>
-              {/* <S.InputLine type="text"></S.InputLine> */}
             </S.InnerContainer>
           </S.RecruitContainer>
     </>

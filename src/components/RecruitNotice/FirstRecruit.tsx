@@ -1,9 +1,7 @@
 import React from "react";
 import * as S from "./RecruitNotice.style";
 
-interface FirstRecruitProps {}
-
-const FirstRecruit = ({}: FirstRecruitProps) => {
+const FirstRecruit = () => {
   return (
     <>
       

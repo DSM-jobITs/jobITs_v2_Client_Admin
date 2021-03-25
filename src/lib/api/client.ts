@@ -11,7 +11,7 @@ export const getClientAccessToken = () =>
   axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
   });
 
