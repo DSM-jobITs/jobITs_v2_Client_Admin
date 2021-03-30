@@ -64,7 +64,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNotic
     managerEmail: "정보 없음",
     introduce: "정보 없음",
     detail: "정보 없음",
-    certificates: [],
+    certificates: [""],
     grade: 0,
     specialty: "정보 없음",
     startTime: "정보 없음",

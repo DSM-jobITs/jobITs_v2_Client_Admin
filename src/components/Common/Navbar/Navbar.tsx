@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as S from "./Navbar.style";
 import { logo } from "../../../assets/img";
-interface NavbarProps {}
 
-const Navbar = ({}: NavbarProps) => {
+const Navbar = () => {
   const [selected, setSelected] = useState(0);
   const routers = [
     {
