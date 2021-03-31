@@ -34,9 +34,14 @@ export const Container = styled.div<{ flex?: boolean }>`
   display: ${(props) => (props.flex ? "flex" : "")};
   justify-content: space-between;
 `;
-
 export const Span = styled.span<{ point?: boolean }>`
-  color: ${(props) => (props.point ? "#DE2727" : "#AEAEAE")};
+  color: ${(props) => (props.point ? "#DE2727" : "#000000")};
+`;
+
+export const DescriptionSpan = styled(Span)`
+  font-size: 0.8rem;
+  color: #aeaeae;
+  margin-left: 1rem;
 `;
 
 export const RecruitContainer = styled(AllContainer)<{ height?: boolean }>`
@@ -46,7 +51,7 @@ export const RecruitContainer = styled(AllContainer)<{ height?: boolean }>`
   box-shadow: 0px 2px 6px #72727245;
   padding: 5rem;
   width: 57rem;
-  height: ${(props) => (props.height ? "30rem" : "44.5rem")};
+  height: ${(props) => (props.height ? "30rem" : "110rem")};
   margin-bottom: 4rem;
 `;
 
@@ -69,8 +74,12 @@ export const InputLine = styled.input<{ width?: string }>`
   border: none;
   border-bottom: 1px solid #e2e2e2;
   outline: none;
-  width: ${(props) => (props.width ? "3rem" : "12rem")};
-  margin-left: 2.6rem;
+  width: ${(props) => (props.width ? "3rem" : "10rem")};
+  margin-left: 2.4rem;
+`;
+
+export const CustomInputLine = styled(InputLine)<{ width?: string }>`
+  width: ${(props) => props.width + "rem"};
 `;
 
 export const SearchButton = styled.button`
