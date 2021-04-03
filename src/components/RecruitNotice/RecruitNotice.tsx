@@ -5,10 +5,14 @@ import { logo } from "../../assets/img";
 
 interface RecruitNoticeProps {
   onRecruit: (data: object) => void;
+  onFileRecruit: (data: FormData, no: string) => void;
 }
 
-const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNoticeProps) => {
+const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit }: RecruitNoticeProps) => {
+  const [file, setFile] = useState<any | null>(null);
   const onSubmitRecruit = () => {
+    let forms = new FormData();
+    forms.append("files", file[0]);
     onRecruit({
       personnel: Number(person),
       name: name,
@@ -45,6 +49,8 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNotic
       deadline: `${deadlineYear}-${deadlineMonth}-${deadlineDate}`,
       allowance: allowance,
     });
+    console.log(file[0]);
+    file === null ? console.log("n") : onFileRecruit(forms, entNo);
   };
 
   const [inputs, setInputs] = useState({
@@ -130,6 +136,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNotic
     deadlineDate,
     allowance,
   } = inputs;
+
+  const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target;
+    setFile(files);
+  };
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value, name } = e.target;
@@ -368,7 +379,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit }: RecruitNotic
 
               <S.InputList>
                 <S.Span>첨부파일</S.Span>
-                <S.Input type="file"></S.Input>
+                <S.Input type="file" name="file" onChange={onFile}></S.Input>
               </S.InputList>
 
               <S.Container flex={false}>

@@ -19,7 +19,7 @@ const Qualification = ({ certificate, grade, specialty }: QualificationProps) =>
         </S.CategoryBox>
         <S.CategoryBox>
           <S.Contents>
-            {certificate && certificate.length > 0 ? certificate.map((item: string, index: number) => <span key={index}> {item}</span>) : null}
+            {certificate && certificate.length > 0 ? certificate.map((item: string, index: number) => <span key={index}> {item}</span>) : "무관"}
           </S.Contents>
           <S.Contents>{grade}</S.Contents>
           <S.Contents>
