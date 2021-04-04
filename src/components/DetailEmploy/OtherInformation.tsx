@@ -24,10 +24,9 @@ const OtherInformation = ({ other, file }: OtherInformationProps) => {
           <S.Contents>
             {file && file.length > 0
               ? file.map((item: any, index: number) => (
-                  <S.Contents key={index}>
-                    {item.name}&nbsp;
-                    {process.env.REACT_APP_S3_URL + item.url}
-                  </S.Contents>
+                  <a key={index} href={process.env.REACT_APP_S3_URL + item.url} download={item.name}>
+                    {item.name}
+                  </a>
                 ))
               : "없음"}
           </S.Contents>
