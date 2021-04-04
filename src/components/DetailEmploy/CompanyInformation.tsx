@@ -19,9 +19,9 @@ const CompanyInformation = ({ entInfo }: CompanyInformationProps) => {
           <S.Category>근무 시간</S.Category>
         </S.CategoryBox>
         <S.CategoryBox>
-          <S.Contents>{entInfo && entInfo.numOfWorker ? entInfo.numOfWorker : "정보 없음"}</S.Contents>
+          <S.Contents>{entInfo && entInfo.numOfWorker ? `${entInfo.numOfWorker}명` : "정보 없음"}</S.Contents>
           <S.Contents>{entInfo && entInfo.entPhone ? entInfo.entPhone : "정보 없음"}</S.Contents>
-          <S.Contents>{entInfo && entInfo.entSales ? entInfo.entSales : "정보 없음"}</S.Contents>
+          <S.Contents>{entInfo && entInfo.entSales ? `${entInfo.entSales}원` : "정보 없음"}</S.Contents>
           <S.Contents>{entInfo && entInfo.address ? entInfo.address : "정보 없음"}</S.Contents>
           <S.Contents>{entInfo && entInfo.establishmentDate ? entInfo.establishmentDate : "정보 없음"}</S.Contents>
           <S.Contents>
