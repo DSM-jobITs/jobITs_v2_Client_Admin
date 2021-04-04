@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { entInfoObjectProps, workingObjectProps, mealProps, welfareProps, otherObjectProps } from "../../interfaces";
+import { entInfoObjectProps, WorkingObjectProps, MealProps, WelfareProps, OtherObjectProps } from "../../interfaces";
 import { DetailEmploy, Qualification, WorkingCondition, CompanyInformation, OtherInformation } from "../../components/DetailEmploy/index";
 import { getDetailRecruit } from "../../lib/api/recruit";
 
@@ -15,11 +15,11 @@ const GetRecruit = () => {
   const [certificate, setCertificate] = useState([]);
   const [grade, setGrade] = useState("");
   const [specialty, setSpecialty] = useState([]);
-  const [workingConditions, setWorkingConditions] = useState<workingObjectProps>();
-  const [meal, setMeal] = useState<mealProps>();
-  const [welfare, setWelfare] = useState<welfareProps>();
+  const [workingConditions, setWorkingConditions] = useState<WorkingObjectProps>();
+  const [meal, setMeal] = useState<MealProps>();
+  const [welfare, setWelfare] = useState<WelfareProps>();
   const [entInfo, setEntInfo] = useState<entInfoObjectProps>();
-  const [other, setOther] = useState<otherObjectProps>();
+  const [other, setOther] = useState<OtherObjectProps>();
   const [file, setFile] = useState([]);
 
   const getRecruit = () => {

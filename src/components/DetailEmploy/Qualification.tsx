@@ -19,11 +19,11 @@ const Qualification = ({ certificate, grade, specialty }: QualificationProps) =>
         </S.CategoryBox>
         <S.CategoryBox>
           <S.Contents>
-            {certificate && certificate.length > 0 ? certificate.map((item: string, index: number) => <span key={index}> {item}</span>) : null}
+            {certificate && certificate.length > 0 ? certificate.map((item: string, index: number) => <span key={index}> {item}</span>) : "무관"}
           </S.Contents>
-          <S.Contents>{grade}</S.Contents>
+          <S.Contents>{grade ? grade : "무관"}</S.Contents>
           <S.Contents>
-            {specialty && specialty.length > 0 ? specialty.map((item: string, index: number) => <span key={index}> {item}</span>) : null}
+            {specialty && specialty.length > 0 ? specialty.map((item: string, index: number) => <span key={index}> {item}</span>) : "없음"}
           </S.Contents>
         </S.CategoryBox>
       </S.CompanyBox>
