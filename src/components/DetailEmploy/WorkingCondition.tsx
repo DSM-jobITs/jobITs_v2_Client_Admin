@@ -33,7 +33,7 @@ const WorkingCondition = ({ workingConditions, meal, welfare }: WorkingCondition
             {welfare && welfare.fourMajor ? "4대 보험, " : null}
             {welfare && welfare.selfDevelop ? "자기 개발비, " : null}
             {welfare && welfare.laptop ? "노트북 제공, " : null}
-            {welfare && welfare.etc ? welfare.etc : null}
+            {welfare && !(welfare.etc === "정보 없음") ? welfare.etc : null}
           </S.Contents>
         </S.CategoryBox>
       </S.CompanyBox>

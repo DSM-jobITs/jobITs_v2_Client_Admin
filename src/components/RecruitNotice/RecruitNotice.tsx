@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./RecruitNotice.style";
 import { Link } from "react-router-dom";
-import { logo } from "../../assets/img";
+import { greenLogo } from "../../assets/img";
 
 interface RecruitNoticeProps {
   onRecruit: (data: object) => void;
@@ -85,7 +85,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
     selfDevelop: false,
     labtop: false,
     recruitPlan: false,
-    etc: "",
+    etc: "정보 없음",
     deadline: "정보 없음",
     year: "",
     month: "",
@@ -167,7 +167,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
               pathname: `/employ`,
             }}
           >
-            <S.Logo src={logo}></S.Logo>
+            <S.Logo src={greenLogo}></S.Logo>
           </Link>
           {/* <S.FileUploadContainer>
             <input type="file"></input>
@@ -233,6 +233,31 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     style={{ borderBottomColor: (!phone || phone.length !== 10 || error === "phone") && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                 </S.Container>
+              </S.Container>
+
+              <S.Container flex={false}>
+                <S.InputList>
+                  <S.Span point={true}>*</S.Span>
+                  <S.Span point={false}>회사소개</S.Span>
+                </S.InputList>
+                <S.TextArea
+                  name="introduce"
+                  maxLength={255}
+                  onChange={onChangeInput}
+                  style={{ borderColor: (introduce.length === 0 || error === "introduce") && status === true ? "red" : "#e2e2e2" }}
+                ></S.TextArea>
+              </S.Container>
+              <S.Container flex={false}>
+                <S.InputList>
+                  <S.Span point={true}>*</S.Span>
+                  <S.Span point={false}>업무내용</S.Span>
+                  <S.TextArea
+                    name="detail"
+                    maxLength={255}
+                    onChange={onChangeInput}
+                    style={{ borderColor: (detail.length === 0 || error === "detail") && status === true ? "red" : "#e2e2e2" }}
+                  ></S.TextArea>
+                </S.InputList>
               </S.Container>
 
               <S.Container flex={true}>
@@ -559,7 +584,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 <S.Input type="file" name="file" onChange={onFile}></S.Input>
               </S.InputList>
 
-              <S.Container flex={false}>
+              {/* <S.Container flex={false}>
                 <S.InputList>
                   <S.Span point={true}>*</S.Span>
                   <S.Span point={false}>회사소개</S.Span>
@@ -582,7 +607,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     style={{ borderColor: (detail.length === 0 || error === "detail") && status === true ? "red" : "#e2e2e2" }}
                   ></S.TextArea>
                 </S.InputList>
-              </S.Container>
+              </S.Container> */}
 
               <S.Container flex={true}>
                 <S.InputList>

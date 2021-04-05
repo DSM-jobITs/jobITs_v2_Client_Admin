@@ -7,6 +7,7 @@ const EmployPageContainer = () => {
   const [page, setPage] = useState(0);
   const [recruitList, setRecruitList] = useState([]);
   const [text, setText] = useState(false);
+  const [maxPage, setMaxPage] = useState(5);
   const prevPage = useCallback(() => {
     page < 0 ? WarningToast("가장 최근 페이지입니다.") : setPage(page - 1);
   }, [page]);
@@ -28,18 +29,21 @@ const EmployPageContainer = () => {
   }, []);
 
   useEffect(() => {
-    getRecruit(page === 0 ? 0 : page - 1)
-      .then((res) => {
-        setRecruitList(res.data.response);
-        res.data.length < 1 ? setText(true) : setText(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    page < 0
+      ? WarningToast("가장 최근 페이지입니다.")
+      : getRecruit(page === 0 ? 0 : page)
+          .then((res) => {
+            setRecruitList(res.data.response);
+            setMaxPage(res.data.maxPage);
+            res.data.response.length < 1 ? setText(true) : setText(false);
+          })
+          .catch(() => {
+            ErrorToast("데이터를 불러오는 데에 실패했습니다.");
+          });
   }, [page]);
 
   const onPageNumber = (page: number) => {
-    setPage(page);
+    setPage(page - 1);
   };
 
   return (
@@ -52,6 +56,7 @@ const EmployPageContainer = () => {
         onPageNum={onPageNumber}
         text={text}
         onRemove={removeItem}
+        maxPage={maxPage}
       />
     </>
   );
