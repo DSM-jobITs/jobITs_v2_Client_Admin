@@ -404,7 +404,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 </S.InputList>
               </S.Container>
 
-              <S.Container>
+              <S.Container flex={true} style={{ width: "100%" }}>
                 <S.InputList>
                   <S.Span point={true}>*</S.Span>
                   <S.Span>담당자 연락처</S.Span>

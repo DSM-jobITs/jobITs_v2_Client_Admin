@@ -72,6 +72,7 @@ export const Text = styled.p<{ white?: boolean }>`
 
 export const InputLine = styled.input<{ width?: string }>`
   border: none;
+  font-size: 0.9rem;
   border-bottom: 1px solid #e2e2e2;
   outline: none;
   width: ${(props) => (props.width ? "3rem" : "10rem")};
