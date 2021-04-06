@@ -24,7 +24,7 @@ const RecruitNoticeContainer = () => {
 
   const onSubmitFileRecruit = (form: FormData, no: string) => {
     console.log("form" + form);
-    onFileRecruit(form, no)
+    onFileRecruit(form, no.replace(/(\d{3})(\d{2})(\d{5})/, "$1-$2-$3"))
       .catch((err) => {
         console.log(err);
         ErrorToast("파일을 다시 확번 확인해주세요.");

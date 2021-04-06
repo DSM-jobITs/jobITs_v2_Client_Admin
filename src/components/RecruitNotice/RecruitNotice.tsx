@@ -48,7 +48,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
       deadline: `${deadlineYear}-${deadlineMonth}-${deadlineDate}`,
       allowance: allowance,
     });
-    if (file !== null) {
+    if (!!file) {
       let forms = new FormData();
       forms.append("files", file[0]);
       onFileRecruit(forms, entNo);
