@@ -51,6 +51,11 @@ export const Contents = styled.p`
   color: #565656;
 `;
 
+export const PreContents = styled.pre`
+  color: #565656;
+  font-family: "AppleSDGothic", "sans-serif";
+`;
+
 export const Button = styled.button`
   background-color: #349a07;
   border-radius: 0.7rem;
