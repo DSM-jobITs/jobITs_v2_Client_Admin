@@ -4,7 +4,7 @@ import * as S from "./DetailEmploy.style";
 interface QualificationProps {
   certificate: string[];
   grade: string;
-  specialty: string[];
+  specialty: string;
 }
 
 const Qualification = ({ certificate, grade, specialty }: QualificationProps) => {
@@ -22,9 +22,7 @@ const Qualification = ({ certificate, grade, specialty }: QualificationProps) =>
             {certificate && certificate.length > 0 ? certificate.map((item: string, index: number) => <span key={index}> {item}</span>) : "무관"}
           </S.Contents>
           <S.Contents>{grade ? grade : "무관"}</S.Contents>
-          <S.Contents>
-            {specialty && specialty.length > 0 ? specialty.map((item: string, index: number) => <span key={index}> {item}</span>) : "없음"}
-          </S.Contents>
+          <S.Contents>{certificate && certificate.length > 0 ? specialty : "없음"}</S.Contents>
         </S.CategoryBox>
       </S.CompanyBox>
     </>
