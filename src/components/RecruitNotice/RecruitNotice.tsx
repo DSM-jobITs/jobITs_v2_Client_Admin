@@ -230,7 +230,10 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     name="phone"
                     onChange={onChangeInput}
                     placeholder="- 없이 입력(10~11자리)"
-                    style={{ borderBottomColor: (!phone || phone.length !== 10 || error === "phone") && status === true ? "red" : "#e2e2e2" }}
+                    style={{
+                      borderBottomColor:
+                        (!phone || phone.length > 11 || phone.length < 10 || error === "phone") && status === true ? "red" : "#e2e2e2",
+                    }}
                   ></S.InputLine>
                 </S.Container>
               </S.Container>
