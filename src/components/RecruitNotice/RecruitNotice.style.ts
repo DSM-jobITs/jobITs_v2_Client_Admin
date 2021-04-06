@@ -36,10 +36,11 @@ export const Container = styled.div<{ flex?: boolean }>`
 `;
 export const Span = styled.span<{ point?: boolean }>`
   color: ${(props) => (props.point ? "#DE2727" : "#000000")};
+  font-size : 0.9rem;
 `;
 
 export const DescriptionSpan = styled(Span)`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #aeaeae;
   margin-left: 1rem;
 `;
