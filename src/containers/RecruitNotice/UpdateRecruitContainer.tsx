@@ -80,6 +80,7 @@ const UpdateRecruitContainer = () => {
       .catch(() => {
         ErrorToast("데이터를 불러오는데에 실패했습니다.");
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const data = {
     personnel: other.personnel,
@@ -219,7 +220,8 @@ const UpdateRecruitContainer = () => {
         other={other}
         onFileRecruit={onSubmitFileRecruit}
         establishment={establishment}
-        deadline={deadline}onReception={onReception}
+        deadline={deadline}
+        onReception={onReception}
         onChangeDeadlineData={onChangeDeadlineData}
         onChangeEstablishment={onChangeEstablishment}
         onMealCheckBox={onMealCheckBox}
