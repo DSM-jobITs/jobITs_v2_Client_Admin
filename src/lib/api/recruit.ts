@@ -8,6 +8,8 @@ export const getRecruit = (page: number) => getClientAccessToken().get(`/recruit
 
 export const removeRecruit = (id: string | undefined) => getClientAccessToken().delete(`/recruit/${id}`);
 
-export const updateRecruit = (id: string) => getClientAccessToken().put(`/recruit/${id}`);
+export const updateRecruit = (id: string, data : object) => getClientAccessToken().put(`/recruit/${id}`, data);
 
-export const onFileRecruit = (form: any, no : string) => getClientAccessToken("multipart-formdata").post(`/recruit/introduction/${no}`, form);
+export const onFileRecruit = (form: any, no: string) => getClientAccessToken("multipart-formdata").post(`/recruit/introduction/${no}`, form);
+
+export const getDetailAdminRecruit = (id: string) => getClientAccessToken().get(`/recruit/admin/${id}`);

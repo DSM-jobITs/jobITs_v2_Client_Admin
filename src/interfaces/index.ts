@@ -9,7 +9,7 @@ export interface entInfoObjectProps {
 }
 
 export interface WorkingObjectProps {
-  allowance : number;
+  allowance: number;
   salary: number;
   period: number;
 }
@@ -32,6 +32,7 @@ export interface OtherObjectProps {
   personnel: number;
   recruitPlan: boolean;
   reception: string;
+  file?: null;
 }
 
 export interface EmployRequestListProps {
@@ -45,46 +46,28 @@ export interface EnterpriseProps {
   name: string;
 }
 
-export interface InitRecruitData {
+export interface ManagerProps {
+  managerRank: string;
+  managerPhone: string;
+  managerEmail: string;
+  managerName: string;
+}
+export interface InitDataProps {
   entName: string;
   entNo: string;
   deadline: string;
   introduction: string;
   workContent: string;
-  qualification: {
-    certificate: string[];
-    grade: number;
-    specialty: string;
-  };
-  workingConditions: {
-    salary: number;
-    period: number;
-    meal: {
-      breakfast: boolean;
-      lunch: boolean;
-      dinner: boolean;
-      includeSalary: boolean;
-    };
-    welfare: {
-      fourMajor: boolean;
-      selfDevelop: boolean;
-      laptop: boolean;
-      etc: string;
-    };
-  };
-  entInfo: {
-    numOfWorker: number;
-    entPhone: string;
-    entSales: number;
-    address: string;
-    establishmentDate: string;
-    startTime: string;
-    endTime: string;
-  };
-  other: {
-    personnel: number;
-    recruitPlan: boolean;
-    reception: string;
-    file: null;
-  };
+  sector: string;
+}
+export interface QualificationProps {
+  certificate: string[];
+  grade: number;
+  specialty: string;
+}
+
+export interface DateProps {
+  year: string;
+  month: string;
+  day: string;
 }
