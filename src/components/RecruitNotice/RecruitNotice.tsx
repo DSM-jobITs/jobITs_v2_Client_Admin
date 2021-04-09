@@ -54,7 +54,6 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
       onFileRecruit(forms, entNo);
     }
   };
-
   const [inputs, setInputs] = useState({
     person: 0,
     name: "",
@@ -169,13 +168,6 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
           >
             <S.Logo src={greenLogo}></S.Logo>
           </Link>
-          {/* <S.FileUploadContainer>
-            <input type="file"></input>
-            <S.FileUploadBox>
-              <S.FileButton>확인</S.FileButton>
-              <S.Text white={true}>( 파일 삽입 후 확인 버튼을 누를 시 자동으로 입력됩니다. )</S.Text>
-            </S.FileUploadBox>
-          </S.FileUploadContainer> */}
           <S.RecruitContainer>
             <S.InnerContainer>
               <S.Container>
@@ -586,32 +578,6 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 <S.Span>첨부파일</S.Span>
                 <S.Input type="file" name="file" onChange={onFile}></S.Input>
               </S.InputList>
-
-              {/* <S.Container flex={false}>
-                <S.InputList>
-                  <S.Span point={true}>*</S.Span>
-                  <S.Span point={false}>회사소개</S.Span>
-                </S.InputList>
-                <S.TextArea
-                  name="introduce"
-                  maxLength={255}
-                  onChange={onChangeInput}
-                  style={{ borderColor: (introduce.length === 0 || error === "introduce") && status === true ? "red" : "#e2e2e2" }}
-                ></S.TextArea>
-              </S.Container>
-              <S.Container flex={false}>
-                <S.InputList>
-                  <S.Span point={true}>*</S.Span>
-                  <S.Span point={false}>업무내용</S.Span>
-                  <S.TextArea
-                    name="detail"
-                    maxLength={255}
-                    onChange={onChangeInput}
-                    style={{ borderColor: (detail.length === 0 || error === "detail") && status === true ? "red" : "#e2e2e2" }}
-                  ></S.TextArea>
-                </S.InputList>
-              </S.Container> */}
-
               <S.Container flex={true}>
                 <S.InputList>
                   <S.Span point={true}>*</S.Span>
