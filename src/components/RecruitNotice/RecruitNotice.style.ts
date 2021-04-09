@@ -36,7 +36,7 @@ export const Container = styled.div<{ flex?: boolean }>`
 `;
 export const Span = styled.span<{ point?: boolean }>`
   color: ${(props) => (props.point ? "#DE2727" : "#000000")};
-  font-size : 0.9rem;
+  font-size: 0.9rem;
 `;
 
 export const DescriptionSpan = styled(Span)`
@@ -62,7 +62,6 @@ export const InputList = styled.span`
 
 export const Input = styled.input<{ type: string }>`
   border: ${(props) => (props.type === "text" ? "none" : "")};
-  width: ${(props) => (props.type === "text" ? "2rem" : "")};
   outline: none;
   text-align: left;
 `;
@@ -78,6 +77,10 @@ export const InputLine = styled.input<{ width?: string }>`
   outline: none;
   width: ${(props) => (props.width ? "3rem" : "10rem")};
   margin-left: 2.4rem;
+
+  &:invalid {
+    border-color: red;
+  }
 `;
 
 export const CustomInputLine = styled(InputLine)<{ width?: string }>`
@@ -136,6 +139,10 @@ export const TextArea = styled.textarea`
   outline: none;
   border: 1px solid #aeaeae;
   box-shadow: 0px 2px 6px #72727245;
+
+  &:invalid {
+    border-color: red;
+  }
 `;
 
 export const Logo = styled.img`
