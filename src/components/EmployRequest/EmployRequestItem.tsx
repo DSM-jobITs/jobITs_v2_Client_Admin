@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import * as S from "./EmployRequest.style";
 import { deleteIcon, addIcon } from "../../assets/img";
 import { confirmAlert } from "../../lib/sweetAlert";
-import { DateProps } from "../../interfaces";
 interface EmployRequestItemProps {
   id: string;
   recruitNo?: number;
