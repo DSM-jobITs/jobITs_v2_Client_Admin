@@ -148,9 +148,9 @@ const UpdateRecruitContainer = () => {
   };
 
   const onWelfareCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
+    const value = e.target.value;
     const key = e.target.name;
-    setWelfare((prev) => ({ ...prev, [key]: checked }));
+    setWelfare((prev) => ({ ...prev, [key]: value }));
   };
 
   const onChangeInitData = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {

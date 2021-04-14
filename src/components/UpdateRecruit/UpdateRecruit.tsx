@@ -311,10 +311,7 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                   <S.Input type="checkbox" name="laptop" checked={welfare.laptop || false} onChange={onWelfareCheckBox} />
                   노트북 지원
                 </S.InputList>
-                <S.InputList>
-                  <S.Input type="checkbox" />
-                  기타 (
-                </S.InputList>
+                <S.InputList>기타 (</S.InputList>
                 <S.InputList>
                   <S.Input type="text" name="etc" value={welfare.etc} onChange={onWelfareCheckBox} />)
                 </S.InputList>
