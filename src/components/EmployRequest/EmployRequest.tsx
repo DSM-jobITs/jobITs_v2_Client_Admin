@@ -13,10 +13,9 @@ interface EmployRequestProps {
   text: boolean;
   page: number;
   onRemove: (id: string | undefined) => void;
-  maxPage: number;
 }
 
-const EmployRequest = ({ recruitList, nextPage, prevPage, onPageNum, text, page, onRemove, maxPage }: EmployRequestProps) => {
+const EmployRequest = ({ recruitList, nextPage, prevPage, onPageNum, text, page, onRemove }: EmployRequestProps) => {
   const onNextPage = () => nextPage();
   const onPrevPage = () => prevPage();
   let pageNum = page < 3 ? [1, 2, 3, 4, 5] : [page - 2, page - 1, page, page + 1, page + 2];

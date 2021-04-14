@@ -7,7 +7,6 @@ const EmployPageContainer = () => {
   const [page, setPage] = useState(0);
   const [recruitList, setRecruitList] = useState([]);
   const [text, setText] = useState(false);
-  const [maxPage, setMaxPage] = useState(5);
   const prevPage = useCallback(() => {
     page < 0 ? WarningToast("가장 최근 페이지입니다.") : setPage(page - 1);
   }, [page]);
@@ -34,7 +33,6 @@ const EmployPageContainer = () => {
       : getRecruit(page === 0 ? 0 : page)
           .then((res) => {
             setRecruitList(res.data.response);
-            setMaxPage(res.data.maxPage);
             res.data.response.length < 1 ? setText(true) : setText(false);
           })
           .catch(() => {
@@ -56,7 +54,6 @@ const EmployPageContainer = () => {
         onPageNum={onPageNumber}
         text={text}
         onRemove={removeItem}
-        maxPage={maxPage}
       />
     </>
   );
