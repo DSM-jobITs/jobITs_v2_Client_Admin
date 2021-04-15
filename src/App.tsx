@@ -12,9 +12,7 @@ function App() {
             {!localStorage.getItem("accessToken") ? <Redirect to="/" /> : <RecruitNotice />}
           </Route>
           <Route exact path="/employ" render={() => <EmployRequest />} />
-          <Route exact path="/employ/:id">
-            {!localStorage.getItem("accessToken") ? <Redirect to="/" /> : <DetailEmploy />}
-          </Route>
+          <Route exact path="/employ/:id" render={() => <DetailEmploy />} />
           <Route exact path="/edit/:id">
             {!localStorage.getItem("accessToken") ? <Redirect to="/" /> : <UpdateRecruit />}
           </Route>
