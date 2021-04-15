@@ -169,7 +169,7 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                 <S.TextArea
                   required
                   name="introduction"
-                  maxLength={255}
+                  maxLength={1000}
                   value={initData.introduction}
                   onChange={onChangeInitData}
                   style={{ borderColor: error === "introduce" && status === true ? "red" : "#e2e2e2" }}
@@ -313,7 +313,7 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                 </S.InputList>
                 <S.InputList>기타 (</S.InputList>
                 <S.InputList>
-                  <S.Input type="text" name="etc" value={welfare.etc} onChange={onWelfareCheckBox} />)
+                  <S.Input type="text" name="etc" value={welfare.etc} onChange={onChangeInitData} />)
                 </S.InputList>
               </S.Container>
               <S.Container flex={true}>
@@ -355,11 +355,11 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                 <S.InputLine
                   type="text"
                   required
-                  placeholder="(전화번호) - 없이 입력"
-                  name="managerPhone"
-                  value={manager.managerPhone}
+                  placeholder="(담당자 이름)"
+                  name="managerName"
+                  value={manager.managerName}
                   onChange={onChangeManager}
-                  style={{ borderBottomColor: error === "managerPhone" && status === true ? "red" : "#e2e2e2" }}
+                  style={{ borderBottomColor: error === "managerName" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 <S.InputLine
                   type="text"
@@ -373,11 +373,11 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                 <S.InputLine
                   type="text"
                   required
-                  placeholder="(담당자 이름)"
-                  name="managerName"
-                  value={manager.managerName}
+                  placeholder="(전화번호) - 없이 입력"
+                  name="managerPhone"
+                  value={manager.managerPhone}
                   onChange={onChangeManager}
-                  style={{ borderBottomColor: error === "managerName" && status === true ? "red" : "#e2e2e2" }}
+                  style={{ borderBottomColor: error === "managerPhone" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
               </S.Container>
               <S.Container flex={true}>
@@ -385,7 +385,7 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                   <S.Span>자격요건</S.Span>
                   <S.InputLine
                     type="text"
-                    name="certificates"
+                    name="certificate"
                     value={qualification.certificate}
                     onChange={onChangeQualification}
                     placeholder="(자격증)"
@@ -546,7 +546,9 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
             </S.InnerContainer>
           </S.RecruitContainer>
           <S.ButtonContainer>
-            <S.CancelButton>취소</S.CancelButton>
+            <Link to="/employ">
+              <S.CancelButton>취소</S.CancelButton>
+            </Link>
             <S.NextButton onClick={onSubmitData}>등록하기</S.NextButton>
           </S.ButtonContainer>
         </S.Container>
