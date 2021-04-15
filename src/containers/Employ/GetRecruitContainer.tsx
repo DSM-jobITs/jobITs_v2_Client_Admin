@@ -41,7 +41,7 @@ const GetRecruit = () => {
         setOther(res.data.other);
         setFile(res.data.other.file);
       })
-      .catch((err) => {
+      .catch(() => {
         ErrorToast("데이터를 불러오는 데에 실패했습니다.");
       });
   };

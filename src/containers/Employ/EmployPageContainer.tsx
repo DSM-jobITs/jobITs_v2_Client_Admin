@@ -44,7 +44,7 @@ const EmployPageContainer = () => {
               WarningToast("로그인 후 이용해주세요.");
             } else ErrorToast("데이터를 불러오는 데에 실패했습니다.");
           });
-  }, [page]);
+  }, [page, history]);
 
   const onPageNumber = (page: number) => {
     setPage(page - 1);
