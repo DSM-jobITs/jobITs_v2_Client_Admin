@@ -101,7 +101,7 @@ const UpdateRecruitContainer = () => {
     managerName: manager.managerName,
     introduce: initData.introduction,
     detail: initData.workContent,
-    certificates: qualification.certificate,
+    certificates: [qualification.certificate],
     grade: qualification.grade,
     specialty: qualification.specialty,
     startTime: entInfo.startTime,
@@ -148,15 +148,15 @@ const UpdateRecruitContainer = () => {
   };
 
   const onWelfareCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const checked = e.target.checked;
     const key = e.target.name;
-    setWelfare((prev) => ({ ...prev, [key]: value }));
+    setWelfare((prev) => ({ ...prev, [key]: checked }));
   };
 
   const onChangeInitData = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
     const key = e.target.name;
-    setInitData((prev) => ({ ...prev, [key]: value }));
+    key === "etc" ? setWelfare((prev) => ({ ...prev, [key]: value })) : setInitData((prev) => ({ ...prev, [key]: value }));
   };
 
   const onChangeDeadlineData = (e: React.ChangeEvent<HTMLInputElement>) => {
