@@ -54,6 +54,8 @@ export const Contents = styled.p`
 export const PreContents = styled.pre`
   color: #565656;
   font-family: "AppleSDGothic", "sans-serif";
+  overflow: auto;
+  white-space: pre-wrap;
 `;
 
 export const Button = styled.button`
