@@ -321,7 +321,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     placeholder="xx"
                     onChange={onChangeInput}
                     style={{
-                      borderBottomColor: (!month || month.length !== 2 || error === "establishmentDate") && status === true ? "red" : "#e2e2e2",
+                      borderBottomColor: (!month || error === "establishmentDate") && status === true ? "red" : "#e2e2e2",
                     }}
                   ></S.InputLine>
                   <S.Span>월</S.Span>
@@ -332,7 +332,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     placeholder="xx"
                     onChange={onChangeInput}
                     style={{
-                      borderBottomColor: (!date || date.length !== 2 || error === "establishmentDate") && status === true ? "red" : "#e2e2e2",
+                      borderBottomColor: (!date || error === "establishmentDate") && status === true ? "red" : "#e2e2e2",
                     }}
                   ></S.InputLine>
                   <S.Span>일</S.Span>
@@ -555,8 +555,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     placeholder="xx"
                     onChange={onChangeInput}
                     style={{
-                      borderBottomColor:
-                        (!deadlineMonth || deadlineMonth.length !== 2 || error === "deadline") && status === true ? "red" : "#e2e2e2",
+                      borderBottomColor: (!deadlineMonth || error === "deadline") && status === true ? "red" : "#e2e2e2",
                     }}
                   ></S.InputLine>
                   <S.Span point={false}>월</S.Span>
@@ -567,7 +566,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     placeholder="xx"
                     onChange={onChangeInput}
                     style={{
-                      borderBottomColor: (!deadlineDate || deadlineDate.length !== 2 || error === "deadline") && status === true ? "red" : "#e2e2e2",
+                      borderBottomColor: (!deadlineDate || error === "deadline") && status === true ? "red" : "#e2e2e2",
                     }}
                   ></S.InputLine>
                   <S.Span point={false}>일</S.Span>
