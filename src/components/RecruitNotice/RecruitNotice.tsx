@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import * as S from "./RecruitNotice.style";
 import { Link } from "react-router-dom";
+import * as S from "./RecruitNotice.style";
 import { greenLogo } from "../../assets/img";
 
 interface RecruitNoticeProps {
@@ -595,7 +595,9 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
             </S.InnerContainer>
           </S.RecruitContainer>
           <S.ButtonContainer>
-            <S.CancelButton>취소</S.CancelButton>
+            <Link to="/employ">
+              <S.CancelButton>취소</S.CancelButton>
+            </Link>
             <S.NextButton onClick={onSubmitRecruit}>등록하기</S.NextButton>
           </S.ButtonContainer>
         </S.Container>

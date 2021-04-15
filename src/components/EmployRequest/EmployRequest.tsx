@@ -61,14 +61,6 @@ const EmployRequest = ({ recruitList, nextPage, prevPage, onPageNum, text, page,
           </S.PageNationItem>
         </S.PageNationBox>
         <S.Container>
-          <Link
-            style={{ textDecoration: "none" }}
-            to={{
-              pathname: `/save`,
-            }}
-          >
-            <S.SaveButton>임시저장 보기</S.SaveButton>
-          </Link>
 
           <Link
             style={{ textDecoration: "none" }}

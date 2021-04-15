@@ -15,7 +15,6 @@ const RecruitNoticeContainer = () => {
         history.push("/employ");
       })
       .catch((err) => {
-        console.log(data);
         setError(err.response.data.message);
         setStatus(true);
         err.response.data.message === "Already Exists Data" ? ErrorToast("중복된 기업 데이터입니다.") : ErrorToast("각 데이터 양식에 맞게 입력해주세요.");
