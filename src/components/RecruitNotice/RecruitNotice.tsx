@@ -70,11 +70,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
     introduce: "",
     detail: "",
     certificates: "무관",
-    grade: 0,
+    grade: error === "grade" ? 0 : 0,
     specialty: "정보 없음",
     startTime: "09:00",
     endTime: "17:00",
-    salary: 0,
+    salary: error === "salary" ? "정보 없음" : "",
     period: 3,
     breakfast: false,
     lunch: false,
@@ -92,7 +92,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
     deadlineYear: "",
     deadlineMonth: "",
     deadlineDate: "",
-    allowance: 0,
+    allowance: "",
   });
 
   const {
@@ -237,7 +237,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 </S.InputList>
                 <S.TextArea
                   name="introduce"
-                  maxLength={255}
+                  maxLength={1000}
                   onChange={onChangeInput}
                   style={{ borderColor: (introduce.length === 0 || error === "introduce") && status === true ? "red" : "#e2e2e2" }}
                 ></S.TextArea>
@@ -413,10 +413,10 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 ></S.InputLine>
                 <S.InputLine
                   type="text"
-                  placeholder="(전화번호) - 없이 입력"
-                  name="managerPhone"
+                  placeholder="(담당자 이름)"
+                  name="managerName"
                   onChange={onChangeInput}
-                  style={{ borderBottomColor: (!managerPhone || error === "managerPhone") && status === true ? "red" : "#e2e2e2" }}
+                  style={{ borderBottomColor: (!managerName || error === "managerName") && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 <S.InputLine
                   type="text"
@@ -436,10 +436,10 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 ></S.InputLine>
                 <S.InputLine
                   type="text"
-                  placeholder="(담당자 이름)"
-                  name="managerName"
+                  placeholder="(전화번호) - 없이 입력"
+                  name="managerPhone"
                   onChange={onChangeInput}
-                  style={{ borderBottomColor: (!managerName || error === "managerName") && status === true ? "red" : "#e2e2e2" }}
+                  style={{ borderBottomColor: (!managerPhone || error === "managerPhone") && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
               </S.Container>
               <S.Container flex={true}>
@@ -472,7 +472,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     type="text"
                     name="allowance"
                     onChange={onChangeInput}
-                    style={{ borderBottomColor: (!allowance || isNaN(allowance) || error === "allowance") && status === true ? "red" : "#e2e2e2" }}
+                    style={{ borderBottomColor: (!allowance || error === "allowance") && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>원</S.Span>
                 </S.InputList>
