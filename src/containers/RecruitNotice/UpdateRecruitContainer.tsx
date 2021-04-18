@@ -101,7 +101,7 @@ const UpdateRecruitContainer = () => {
     managerName: manager.managerName,
     introduce: initData.introduction,
     detail: initData.workContent,
-    certificates: [qualification.certificate],
+    certificates: [qualification.certificate].length === 0 ? ["무관"] : [qualification.certificate],
     grade: qualification.grade,
     specialty: qualification.specialty,
     startTime: entInfo.startTime,
@@ -119,7 +119,7 @@ const UpdateRecruitContainer = () => {
     recruitPlan: other.recruitPlan,
     reception: other.reception,
     deadline: `${deadline.year}-${deadline.month}-${deadline.day}`,
-    allowance: 0,
+    allowance: workingConditions.allowance,
   };
 
   const onSubmitFileRecruit = (form: FormData, no: string) => {
