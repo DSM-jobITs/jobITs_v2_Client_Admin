@@ -21,6 +21,7 @@ const UpdateRecruitContainer = () => {
   const id = location.pathname.split("/");
   const [status, setStatus] = useState(false);
   const [error, setError] = useState("");
+  const [change, setChange] = useState(false);
   const [initData, setInitData] = useState<InitDataProps>({
     entName: "",
     entNo: "",
@@ -40,17 +41,17 @@ const UpdateRecruitContainer = () => {
     day: "",
   });
   const [workingConditions, setWorkingConditions] = useState<WorkingObjectProps>({
-    allowance: 0,
-    salary: 0,
-    period: 0,
+    allowance: "0",
+    salary: "0",
+    period: 3,
   });
-  const [qualification, setQualification] = useState<QualificationProps>({ certificate: [""], grade: 0, specialty: "" });
+  const [qualification, setQualification] = useState<QualificationProps>({ certificate: [], grade: 0, specialty: "" });
   const [meal, setMeal] = useState<MealProps>({ breakfast: false, lunch: false, dinner: false, includeSalary: false });
   const [welfare, setWelfare] = useState<WelfareProps>({ fourMajor: false, selfDevelop: false, laptop: false, etc: "" });
   const [entInfo, setEntInfo] = useState<entInfoObjectProps>({
     numOfWorker: 0,
     entPhone: "",
-    entSales: 0,
+    entSales: "0",
     address: "",
     establishmentDate: "",
     startTime: "",
@@ -62,7 +63,13 @@ const UpdateRecruitContainer = () => {
     managerEmail: "",
     managerName: "",
   });
-  const [other, setOther] = useState<OtherObjectProps>({ personnel: 0, recruitPlan: false, reception: "", file: null });
+  const [other, setOther] = useState<OtherObjectProps>({
+    personnel: 0,
+    recruitPlan: false,
+    reception: "",
+    file: null,
+    notRecruitPlan: true,
+  });
   useEffect(() => {
     getDetailAdminRecruit(id[2])
       .then((res) => {
@@ -90,7 +97,7 @@ const UpdateRecruitContainer = () => {
       entInfo.entPhone.length === 10
         ? entInfo.entPhone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")
         : entInfo.entPhone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"),
-    sales: entInfo.entSales,
+    sales: !entInfo.entSales ? "0" : entInfo.entSales,
     sector: initData.sector,
     establishmentDate: `${establishment.year}-${establishment.month}-${establishment.day}`,
     workers: entInfo.numOfWorker,
@@ -101,12 +108,12 @@ const UpdateRecruitContainer = () => {
     managerName: manager.managerName,
     introduce: initData.introduction,
     detail: initData.workContent,
-    certificates: [qualification.certificate].length === 0 ? ["무관"] : [qualification.certificate],
-    grade: qualification.grade,
+    certificates: change ? [qualification.certificate] : qualification.certificate,
+    grade: !qualification.grade ? "0" : qualification.grade,
     specialty: qualification.specialty,
     startTime: entInfo.startTime,
     endTime: entInfo.endTime,
-    salary: workingConditions.salary,
+    salary: !workingConditions.salary ? "0" : workingConditions.salary,
     period: workingConditions.period,
     breakfast: meal.breakfast,
     lunch: meal.lunch,
@@ -119,7 +126,7 @@ const UpdateRecruitContainer = () => {
     recruitPlan: other.recruitPlan,
     reception: other.reception,
     deadline: `${deadline.year}-${deadline.month}-${deadline.day}`,
-    allowance: workingConditions.allowance,
+    allowance: !workingConditions.allowance ? "0" : workingConditions.allowance,
   };
 
   const onSubmitFileRecruit = (form: FormData, no: string) => {
@@ -180,6 +187,15 @@ const UpdateRecruitContainer = () => {
   const onChangeQualification = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const key = e.target.name;
+
+    if (key === "certificate") {
+      if (!value) {
+        console.log(qualification.certificate);
+        setQualification((prev) => ({ ...prev, [key]: [] }));
+        setChange(false);
+      }
+      setChange(true);
+    }
     setQualification((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -192,6 +208,9 @@ const UpdateRecruitContainer = () => {
   const onReception = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
     const key = e.target.name;
+    if (key === "notRecruitPlan") {
+      setOther((prev) => ({ ...prev, ["recruitPlan"]: false }));
+    }
     setOther((prev) => ({ ...prev, [key]: checked }));
   };
 
@@ -203,6 +222,7 @@ const UpdateRecruitContainer = () => {
   const onChangeWorkingConditions = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const key = e.target.name;
+    console.log(value);
     setWorkingConditions((prev) => ({ ...prev, [key]: value }));
   };
 

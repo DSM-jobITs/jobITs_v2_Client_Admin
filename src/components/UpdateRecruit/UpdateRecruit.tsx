@@ -420,7 +420,7 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                     required
                     name="allowance"
                     value={workingData.allowance}
-                    onChange={onChangeQualification}
+                    onChange={onChangeWorkingConditions}
                     style={{ borderBottomColor: error === "allowance" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>원</S.Span>
@@ -539,7 +539,7 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                   결격사유 없을 시 전원채용
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" />
+                  <S.Input type="checkbox" name="notRecruitPlan" checked={other.recruitPlan === false ? true : false} onChange={onReception} />
                   평가 후 일부 채용
                 </S.InputList>
               </S.Container>

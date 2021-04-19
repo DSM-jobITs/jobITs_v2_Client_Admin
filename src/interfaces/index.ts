@@ -1,7 +1,7 @@
 export interface entInfoObjectProps {
   numOfWorker: number;
   entPhone: string;
-  entSales: number;
+  entSales: string;
   address: string;
   establishmentDate: string;
   startTime: string;
@@ -9,8 +9,8 @@ export interface entInfoObjectProps {
 }
 
 export interface WorkingObjectProps {
-  allowance: number;
-  salary: number;
+  allowance: string;
+  salary: string;
   period: number;
 }
 
@@ -33,6 +33,7 @@ export interface OtherObjectProps {
   recruitPlan: boolean;
   reception: string;
   file?: null;
+  notRecruitPlan?: boolean;
 }
 
 export interface EmployRequestListProps {
