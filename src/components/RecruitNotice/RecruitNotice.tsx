@@ -18,8 +18,8 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
       name: name,
       entNo: entNo.replace(/(\d{3})(\d{2})(\d{5})/, "$1-$2-$3"),
       phone: phone.length === 10 ? phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3") : phone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"),
-      sales: sales,
-      sector: sector,
+      sales: !sales ? "0" : sales,
+      sector: !sector ? null : sector,
       establishmentDate: `${year}-${month}-${date}`,
       workers: workers,
       address: address,
@@ -30,11 +30,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
       introduce: introduce,
       detail: detail,
       certificates: [certificates],
-      grade: grade,
+      grade: !grade ? "0" : grade,
       specialty: specialty,
       startTime: startTime,
       endTime: endTime,
-      salary: salary,
+      salary: !salary ? "0" : salary,
       period: period,
       breakfast: breakfast,
       lunch: lunch,
@@ -46,7 +46,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
       etc: etc,
       recruitPlan: recruitPlan,
       deadline: `${deadlineYear}-${deadlineMonth}-${deadlineDate}`,
-      allowance: allowance,
+      allowance: !allowance ? "0" : allowance,
     });
     if (!!file) {
       let forms = new FormData();
@@ -59,7 +59,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
     name: "",
     entNo: "",
     phone: "",
-    sales: 0,
+    sales: "0",
     sector: "정보통신업",
     workers: 0,
     address: "",
@@ -69,12 +69,12 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
     managerName: "",
     introduce: "",
     detail: "",
-    certificates: "무관",
-    grade: error === "grade" ? 0 : 0,
+    certificates: "",
+    grade: "0",
     specialty: "정보 없음",
     startTime: "09:00",
     endTime: "17:00",
-    salary: error === "salary" ? "정보 없음" : "",
+    salary: "0",
     period: 3,
     breakfast: false,
     lunch: false,
@@ -265,7 +265,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     type="text"
                     name="sales"
                     onChange={onChangeInput}
-                    style={{ borderBottomColor: (!sales || sales === 0 || isNaN(sales) || error === "sales") && status === true ? "red" : "#e2e2e2" }}
+                    style={{ borderBottomColor: error === "sales" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>억</S.Span>
                 </S.Container>
@@ -292,7 +292,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     name="sector"
                     value={sector}
                     onChange={onChangeInput}
-                    style={{ borderBottomColor: (!sector || error === "sector") && status === true ? "red" : "#e2e2e2" }}
+                    style={{ borderBottomColor: error === "sector" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                 </S.Container>
               </S.Container>
@@ -451,7 +451,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     name="grade"
                     onChange={onChangeInput}
                     placeholder="(성적) 0~100 %이내"
-                    style={{ borderBottomColor: (grade > 100 || 0 > grade || error === "grade") && status === true ? "red" : "#e2e2e2" }}
+                    style={{ borderBottomColor: (grade > "100" || "0" > grade || error === "grade") && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.CustomInputLine
                     type="text"

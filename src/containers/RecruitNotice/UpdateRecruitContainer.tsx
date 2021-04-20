@@ -98,7 +98,7 @@ const UpdateRecruitContainer = () => {
         ? entInfo.entPhone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")
         : entInfo.entPhone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"),
     sales: !entInfo.entSales ? "0" : entInfo.entSales,
-    sector: initData.sector,
+    sector: !initData.sector ? "정보통신업" : initData.sector,
     establishmentDate: `${establishment.year}-${establishment.month}-${establishment.day}`,
     workers: entInfo.numOfWorker,
     address: entInfo.address,
