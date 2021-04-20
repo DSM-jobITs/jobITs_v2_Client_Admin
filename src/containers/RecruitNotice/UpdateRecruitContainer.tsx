@@ -209,7 +209,7 @@ const UpdateRecruitContainer = () => {
     const checked = e.target.checked;
     const key = e.target.name;
     if (key === "notRecruitPlan") {
-      setOther((prev) => ({ ...prev, ["recruitPlan"]: false }));
+      setOther((prev) => ({ ...prev, [e.target.id]: false }));
     }
     setOther((prev) => ({ ...prev, [key]: checked }));
   };

@@ -539,7 +539,13 @@ const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
                   결격사유 없을 시 전원채용
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="notRecruitPlan" checked={other.recruitPlan === false ? true : false} onChange={onReception} />
+                  <S.Input
+                    type="checkbox"
+                    name="notRecruitPlan"
+                    id="recruitPlan"
+                    checked={other.recruitPlan === false ? true : false}
+                    onChange={onReception}
+                  />
                   평가 후 일부 채용
                 </S.InputList>
               </S.Container>
