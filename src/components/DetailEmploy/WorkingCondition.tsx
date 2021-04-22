@@ -30,9 +30,9 @@ const WorkingCondition = ({ workingConditions, meal, welfare }: WorkingCondition
             {meal && meal.includeSalary ? "급여포함 " : "급여 미포함"}
           </S.Contents>
           <S.Contents>
-            {welfare && welfare.fourMajor ? "4대 보험, " : null}
-            {welfare && welfare.selfDevelop ? "자기 개발비, " : null}
-            {welfare && welfare.laptop ? "노트북 제공, " : null}
+            {welfare && welfare.fourMajor ? "4대 보험 " : null}
+            {welfare && welfare.selfDevelop ? "자기개발비 " : null}
+            {welfare && welfare.laptop ? "노트북 제공 " : null}
             {welfare && !(welfare.etc === "정보 없음") ? welfare.etc : null}
           </S.Contents>
         </S.CategoryBox>

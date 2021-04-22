@@ -122,7 +122,7 @@ const UpdateRecruitContainer = () => {
     fourMajor: welfare.fourMajor,
     selfDevelop: welfare.selfDevelop,
     labtop: welfare.laptop,
-    etc: welfare.etc,
+    etc: !welfare.etc ? "정보 없음" : welfare.etc,
     recruitPlan: other.recruitPlan,
     reception: other.reception,
     deadline: `${deadline.year}-${deadline.month}-${deadline.day}`,
