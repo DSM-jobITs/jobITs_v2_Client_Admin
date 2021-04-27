@@ -369,10 +369,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.Input type="checkbox" name="labtop" onChange={onCheckBoxInput} />
                   노트북 지원
                 </S.InputList>
-                <S.InputList>
-                  <S.Input type="checkbox" />
-                  기타 (
-                </S.InputList>
+                <S.InputList>기타 (</S.InputList>
                 <S.InputList>
                   <S.Input type="text" name="etc" onChange={onChangeInput} />)
                 </S.InputList>
