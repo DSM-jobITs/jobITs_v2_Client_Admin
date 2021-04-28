@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./Login.style";
 import { loginImg } from "../../assets/img";
 interface LoginProps {
@@ -16,18 +16,16 @@ const Login = ({ onSubmitLogin, onKeyPressLogin, onChangeInput, inputs }: LoginP
         <S.Title>LOGIN</S.Title>
         <S.DescriptionText>Welcome to JobITs</S.DescriptionText>
         <S.Text>Log in to JobITs and use various features.</S.Text>
-        <form>
-          <S.Input placeholder="id" autoComplete="username" name="id" value={inputs.id} onChange={onChangeInput}></S.Input>
-          <S.Input
-            placeholder="password"
-            autoComplete="current-password"
-            name="password"
-            onChange={onChangeInput}
-            value={inputs.password}
-            type="password"
-            onKeyPress={onKeyPressLogin}
-          ></S.Input>
-        </form>
+        <S.Input placeholder="id" autoComplete="username" name="id" value={inputs.id} onChange={onChangeInput} onKeyPress={onKeyPressLogin}></S.Input>
+        <S.Input
+          placeholder="password"
+          autoComplete="current-password"
+          name="password"
+          onChange={onChangeInput}
+          value={inputs.password}
+          type="password"
+          onKeyPress={onKeyPressLogin}
+        ></S.Input>
         <S.Button onClick={onSubmitLogin}>Login</S.Button>
       </S.Container>
     </S.LoginContainer>
