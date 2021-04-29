@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { updateRecruit, getDetailAdminRecruit, onFileRecruit } from "../../lib/api/recruit";
 import { useHistory, useLocation } from "react-router-dom";
 import { SuccessToast, ErrorToast } from "../../lib/toast";
-import UpdateRecruit from "../../components/UpdateRecruit/UpdateRecruit";
 import {
   InitDataProps,
   WorkingObjectProps,
@@ -14,6 +13,16 @@ import {
   ManagerProps,
   DateProps,
 } from "../../interfaces";
+import {
+  UpdateRecruit,
+  WelfareInfo,
+  InitDataInfo,
+  ManagerInfo,
+  QualificationInfo,
+  WorkingDataInfo,
+  RecruitPlanInfo,
+  EntInfo
+} from "../../components/UpdateRecruit";
 
 const UpdateRecruitContainer = () => {
   const location = useLocation();
@@ -228,33 +237,48 @@ const UpdateRecruitContainer = () => {
 
   return (
     <>
-      <UpdateRecruit
-        onUpdateRecruit={onUpdateRecruitData}
-        initData={initData}
-        workingData={workingConditions}
-        qualification={qualification}
-        manager={manager}
-        meal={meal}
-        welfare={welfare}
-        entInfo={entInfo}
-        other={other}
-        onFileRecruit={onSubmitFileRecruit}
-        establishment={establishment}
-        deadline={deadline}
-        onReception={onReception}
-        onChangeDeadlineData={onChangeDeadlineData}
-        onChangeEstablishment={onChangeEstablishment}
-        onMealCheckBox={onMealCheckBox}
-        onWelfareCheckBox={onWelfareCheckBox}
-        onChangeInitData={onChangeInitData}
-        onChangeEntInfo={onChangeEntInfo}
-        onChangeQualification={onChangeQualification}
-        onChangeOther={onChangeOther}
-        onChangeManager={onChangeManager}
-        onChangeWorkingConditions={onChangeWorkingConditions}
-        status={status}
-        error={error}
-      />
+      <UpdateRecruit onUpdateRecruit={onUpdateRecruitData} initData={initData} onFileRecruit={onSubmitFileRecruit}>
+        <InitDataInfo
+          entInfo={entInfo}
+          other={other}
+          initData={initData}
+          status={status}
+          error={error}
+          onChangeOther={onChangeOther}
+          onChangeInitData={onChangeInitData}
+          onChangeEntInfo={onChangeEntInfo}
+        />
+        <EntInfo
+          entInfo={entInfo}
+          establishment={establishment}
+          initData={initData}
+          status={status}
+          error={error}
+          onChangeEntInfo={onChangeEntInfo}
+          onChangeInitData={onChangeInitData}
+          onChangeEstablishment={onChangeEstablishment}
+        />
+        <WelfareInfo
+          meal={meal}
+          welfare={welfare}
+          onChangeInitData={onChangeInitData}
+          onMealCheckBox={onMealCheckBox}
+          onWelfareCheckBox={onWelfareCheckBox}
+        />
+        <ManagerInfo manager={manager} onChangeManager={onChangeManager} status={status} error={error} />
+        <QualificationInfo qualification={qualification} status={status} error={error} onChangeQualification={onChangeQualification} />
+        <WorkingDataInfo
+          workingData={workingConditions}
+          entInfo={entInfo}
+          deadline={deadline}
+          onChangeWorkingConditions={onChangeWorkingConditions}
+          status={status}
+          error={error}
+          onChangeEntInfo={onChangeEntInfo}
+          onChangeDeadlineData={onChangeDeadlineData}
+        />
+        <RecruitPlanInfo other={other} onReception={onReception} />
+      </UpdateRecruit>
     </>
   );
 };
