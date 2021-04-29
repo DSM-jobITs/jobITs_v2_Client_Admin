@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "../../components/Login/Login";
 import { login } from "../../lib/api/user";
 import { useHistory } from "react-router-dom";
@@ -7,8 +7,25 @@ import { ErrorToast, SuccessToast } from "../../lib/toast";
 const UserContainer = () => {
   const history = useHistory();
 
-  const onSubmitLogin = (id: string, password: string) => {
-    login({ id: id, password: password })
+  const [inputs, setInputs] = useState({
+    id: "",
+    password: "",
+  });
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const onKeyPressLogin = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") onSubmitLogin();
+  };
+
+  const onSubmitLogin = () => {
+    login({ id: inputs.id, password: inputs.password })
       .then((res) => {
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
@@ -22,7 +39,7 @@ const UserContainer = () => {
 
   return (
     <>
-      <Login onLogin={onSubmitLogin} />
+      <Login onSubmitLogin={onSubmitLogin} onKeyPressLogin={onKeyPressLogin} onChangeInput={onChangeInput} inputs={inputs} />
     </>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./DetailEmploy.style";
-import { otherObjectProps } from "../../interfaces";
+import { OtherObjectProps } from "../../interfaces";
 interface OtherInformationProps {
-  other: otherObjectProps | undefined;
+  other: OtherObjectProps | undefined;
   file: string[];
 }
 
@@ -18,18 +18,17 @@ const OtherInformation = ({ other, file }: OtherInformationProps) => {
           <S.Category>첨부 파일</S.Category>
         </S.CategoryBox>
         <S.CategoryBox>
-          <S.Contents>{other && other.personnel ? other.personnel : "0"}</S.Contents>
+          <S.Contents>{other && other.personnel ? `${other.personnel}명` : "0"}</S.Contents>
           <S.Contents>{other && other.recruitPlan ? "채용계획 있음" : "평가 후 일부 채용"}</S.Contents>
           <S.Contents>{other && other.reception}</S.Contents>
           <S.Contents>
             {file && file.length > 0
               ? file.map((item: any, index: number) => (
-                  <S.Contents key={index}>
-                    {item.name}&nbsp;
-                    {process.env.REACT_APP_S3_URL + item.url}
-                  </S.Contents>
+                  <a key={index} href={process.env.REACT_APP_S3_URL + item.url} download={item.name}>
+                    {item.name}
+                  </a>
                 ))
-              : null}
+              : "없음"}
           </S.Contents>
         </S.CategoryBox>
       </S.CompanyBox>

@@ -1,161 +1,89 @@
 import React, { useState } from "react";
+import * as S from "./../RecruitNotice/RecruitNotice.style";
 import { Link } from "react-router-dom";
-import * as S from "./RecruitNotice.style";
 import { greenLogo } from "../../assets/img";
+import {
+  InitDataProps,
+  WorkingObjectProps,
+  QualificationProps,
+  MealProps,
+  WelfareProps,
+  entInfoObjectProps,
+  OtherObjectProps,
+  ManagerProps,
+  DateProps,
+} from "../../interfaces";
 
-interface RecruitNoticeProps {
-  onRecruit: (data: object) => void;
+interface UpdateRecruitProps {
+  onUpdateRecruit: () => void;
+  initData: InitDataProps;
+  workingData: WorkingObjectProps;
+  qualification: QualificationProps;
+  meal: MealProps;
+  welfare: WelfareProps;
+  entInfo: entInfoObjectProps;
+  other: OtherObjectProps;
+  manager: ManagerProps;
+  establishment: DateProps;
+  deadline: DateProps;
   onFileRecruit: (data: FormData, no: string) => void;
+  onReception: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeDeadlineData: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onWelfareCheckBox: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onMealCheckBox: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeEntInfo: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeEstablishment: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeQualification: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeOther: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeManager: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeWorkingConditions: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeInitData: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
   status: boolean;
   error: string;
 }
 
-const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit, status, error }: RecruitNoticeProps) => {
+const UpdateRecruit: React.FC<UpdateRecruitProps> = ({
+  onUpdateRecruit,
+  initData,
+  onFileRecruit,
+  workingData,
+  qualification,
+  meal,
+  welfare,
+  deadline,
+  establishment,
+  other,
+  entInfo,
+  status,
+  error,
+  manager,
+  onChangeEstablishment,
+  onReception,
+  onChangeDeadlineData,
+  onChangeInitData,
+  onChangeEntInfo,
+  onChangeQualification,
+  onChangeOther,
+  onChangeManager,
+  onChangeWorkingConditions,
+  onMealCheckBox,
+  onWelfareCheckBox,
+}) => {
   const [file, setFile] = useState<any | null>([]);
-  const onSubmitRecruit = () => {
-    onRecruit({
-      personnel: Number(person),
-      name: name,
-      entNo: entNo.replace(/(\d{3})(\d{2})(\d{5})/, "$1-$2-$3"),
-      phone: phone.length === 10 ? phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3") : phone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"),
-      sales: !sales ? "0" : sales,
-      sector: !sector ? null : sector,
-      establishmentDate: `${year}-${month}-${date}`,
-      workers: workers,
-      address: address,
-      managerRank: managerRank,
-      managerPhone: managerPhone.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3"),
-      managerEmail: managerEmail,
-      managerName: managerName,
-      introduce: introduce,
-      detail: detail,
-      certificates: [certificates],
-      grade: !grade ? "0" : grade,
-      specialty: specialty,
-      startTime: startTime,
-      endTime: endTime,
-      salary: !salary ? "0" : salary,
-      period: period,
-      breakfast: breakfast,
-      lunch: lunch,
-      dinner: dinner,
-      mealSalary: mealSalary,
-      fourMajor: fourMajor,
-      selfDevelop: selfDevelop,
-      labtop: labtop,
-      etc: etc,
-      recruitPlan: recruitPlan,
-      deadline: `${deadlineYear}-${deadlineMonth}-${deadlineDate}`,
-      allowance: !allowance ? "0" : allowance,
-    });
+  const onSubmitData = () => {
+    onUpdateRecruit();
     if (!!file) {
       let forms = new FormData();
       forms.append("files", file[0]);
-      onFileRecruit(forms, entNo);
+      onFileRecruit(forms, initData.entNo);
     }
   };
-  const [inputs, setInputs] = useState({
-    person: 0,
-    name: "",
-    entNo: "",
-    phone: "",
-    sales: "0",
-    sector: "정보통신업",
-    workers: 0,
-    address: "",
-    managerRank: "",
-    managerPhone: "",
-    managerEmail: "",
-    managerName: "",
-    introduce: "",
-    detail: "",
-    certificates: "",
-    grade: "0",
-    specialty: "정보 없음",
-    startTime: "09:00",
-    endTime: "17:00",
-    salary: "0",
-    period: 3,
-    breakfast: false,
-    lunch: false,
-    dinner: false,
-    mealSalary: false,
-    fourMajor: false,
-    selfDevelop: false,
-    labtop: false,
-    recruitPlan: false,
-    etc: "정보 없음",
-    deadline: "정보 없음",
-    year: "",
-    month: "",
-    date: "",
-    deadlineYear: "",
-    deadlineMonth: "",
-    deadlineDate: "",
-    allowance: "",
-  });
-
-  const {
-    person,
-    name,
-    entNo,
-    phone,
-    sales,
-    sector,
-    workers,
-    address,
-    managerRank,
-    managerPhone,
-    managerEmail,
-    managerName,
-    introduce,
-    detail,
-    certificates,
-    grade,
-    specialty,
-    startTime,
-    endTime,
-    salary,
-    period,
-    breakfast,
-    lunch,
-    dinner,
-    mealSalary,
-    fourMajor,
-    selfDevelop,
-    labtop,
-    recruitPlan,
-    etc,
-    year,
-    month,
-    date,
-    deadlineYear,
-    deadlineMonth,
-    deadlineDate,
-    allowance,
-  } = inputs;
 
   const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     setFile(files);
   };
 
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { value, name } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
-
-  const onCheckBoxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { isTrusted } = e;
-    const { name } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: isTrusted,
-    });
-  };
   return (
     <>
       <S.AllContainer>
@@ -178,11 +106,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 <S.InputLine
                   type="text"
                   width="small"
-                  name="person"
-                  onChange={onChangeInput}
-                  style={{
-                    borderBottomColor: (!person || person > 9 || isNaN(person) || error === "personnel") && status === true ? "red" : "#e2e2e2",
-                  }}
+                  name="personnel"
+                  required
+                  value={other.personnel}
+                  onChange={onChangeOther}
+                  style={{ borderBottomColor: error === "personnel" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 <S.Span>명</S.Span>
               </S.Container>
@@ -194,9 +122,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   </S.InputList>
                   <S.InputLine
                     type="text"
-                    name="name"
-                    onChange={onChangeInput}
-                    style={{ borderBottomColor: name === "" && status === true && error === "name" ? "red" : "#e2e2e2" }}
+                    name="entName"
+                    required
+                    value={initData.entName}
+                    onChange={onChangeInitData}
+                    style={{ borderBottomColor: error === "name" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                 </S.Container>
                 <S.Container>
@@ -207,9 +137,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.InputLine
                     type="text"
                     name="entNo"
-                    onChange={onChangeInput}
+                    required
+                    value={initData.entNo}
+                    onChange={onChangeInitData}
                     placeholder="- 없이 입력(10자리)"
-                    style={{ borderBottomColor: (!entNo || entNo.length !== 10 || error === "entNo") && status === true ? "red" : "#e2e2e2" }}
+                    style={{ borderBottomColor: error === "entNo" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                 </S.Container>
                 <S.Container>
@@ -219,13 +151,12 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   </S.InputList>
                   <S.InputLine
                     type="text"
-                    name="phone"
-                    onChange={onChangeInput}
+                    name="entPhone"
+                    required
+                    value={entInfo.entPhone}
+                    onChange={onChangeEntInfo}
                     placeholder="- 없이 입력(10~11자리)"
-                    style={{
-                      borderBottomColor:
-                        (!phone || phone.length > 11 || phone.length < 10 || error === "phone") && status === true ? "red" : "#e2e2e2",
-                    }}
+                    style={{ borderBottomColor: error === "phone" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                 </S.Container>
               </S.Container>
@@ -236,10 +167,12 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.Span point={false}>회사소개</S.Span>
                 </S.InputList>
                 <S.TextArea
-                  name="introduce"
+                  required
+                  name="introduction"
                   maxLength={1000}
-                  onChange={onChangeInput}
-                  style={{ borderColor: (introduce.length === 0 || error === "introduce") && status === true ? "red" : "#e2e2e2" }}
+                  value={initData.introduction}
+                  onChange={onChangeInitData}
+                  style={{ borderColor: error === "introduce" && status === true ? "red" : "#e2e2e2" }}
                 ></S.TextArea>
               </S.Container>
               <S.Container flex={false}>
@@ -247,10 +180,12 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.Span point={true}>*</S.Span>
                   <S.Span point={false}>업무내용</S.Span>
                   <S.TextArea
-                    name="detail"
+                    required
+                    name="workContent"
                     maxLength={255}
-                    onChange={onChangeInput}
-                    style={{ borderColor: (detail.length === 0 || error === "detail") && status === true ? "red" : "#e2e2e2" }}
+                    value={initData.workContent}
+                    onChange={onChangeInitData}
+                    style={{ borderColor: error === "detail" && status === true ? "red" : "#e2e2e2" }}
                   ></S.TextArea>
                 </S.InputList>
               </S.Container>
@@ -263,8 +198,10 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   </S.InputList>
                   <S.InputLine
                     type="text"
-                    name="sales"
-                    onChange={onChangeInput}
+                    name="entSales"
+                    required
+                    value={entInfo.entSales}
+                    onChange={onChangeEntInfo}
                     style={{ borderBottomColor: error === "sales" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>억</S.Span>
@@ -276,9 +213,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   </S.InputList>
                   <S.InputLine
                     type="text"
-                    name="workers"
-                    onChange={onChangeInput}
-                    style={{ borderBottomColor: (!workers || isNaN(workers) || error === "workers") && status === true ? "red" : "#e2e2e2" }}
+                    name="numOfWorker"
+                    required
+                    value={entInfo.numOfWorker}
+                    onChange={onChangeEntInfo}
+                    style={{ borderBottomColor: error === "workers" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>명</S.Span>
                 </S.Container>
@@ -289,9 +228,10 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   </S.InputList>
                   <S.InputLine
                     type="text"
+                    required
                     name="sector"
-                    value={sector}
-                    onChange={onChangeInput}
+                    value={initData.sector}
+                    onChange={onChangeInitData}
                     style={{ borderBottomColor: error === "sector" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                 </S.Container>
@@ -307,33 +247,33 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                     type="text"
                     width="small"
                     name="year"
+                    required
                     placeholder="xxxx"
-                    onChange={onChangeInput}
-                    style={{
-                      borderBottomColor: (!year || year.length !== 4 || error === "establishmentDate") && status === true ? "red" : "#e2e2e2",
-                    }}
+                    value={establishment.year}
+                    onChange={onChangeEstablishment}
+                    style={{ borderBottomColor: error === "establishmentDate" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>년</S.Span>
                   <S.InputLine
                     type="text"
                     width="small"
                     name="month"
+                    value={establishment.month}
+                    required
                     placeholder="xx"
-                    onChange={onChangeInput}
-                    style={{
-                      borderBottomColor: (!month || error === "establishmentDate") && status === true ? "red" : "#e2e2e2",
-                    }}
+                    onChange={onChangeEstablishment}
+                    style={{ borderBottomColor: error === "establishmentDate" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>월</S.Span>
                   <S.InputLine
                     type="text"
                     width="small"
-                    name="date"
+                    name="day"
+                    value={establishment.day}
+                    required
                     placeholder="xx"
-                    onChange={onChangeInput}
-                    style={{
-                      borderBottomColor: (!date || error === "establishmentDate") && status === true ? "red" : "#e2e2e2",
-                    }}
+                    onChange={onChangeEstablishment}
+                    style={{ borderBottomColor: error === "establishmentDate" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>일</S.Span>
                 </S.Container>
@@ -345,9 +285,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.CustomInputLine
                     type="text"
                     name="address"
-                    onChange={onChangeInput}
+                    required
+                    value={entInfo.address}
+                    onChange={onChangeEntInfo}
                     width={"22"}
-                    style={{ borderBottomColor: (!address || error === "address") && status === true ? "red" : "#e2e2e2" }}
+                    style={{ borderBottomColor: error === "address" && status === true ? "red" : "#e2e2e2" }}
                   ></S.CustomInputLine>
                 </S.Container>
                 <S.Container></S.Container>
@@ -358,20 +300,20 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.Span>복지</S.Span>
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="fourMajor" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="fourMajor" checked={welfare.fourMajor || false} onChange={onWelfareCheckBox} />
                   4대 보험
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="selfDevelop" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="selfDevelop" checked={welfare.selfDevelop || false} onChange={onWelfareCheckBox} />
                   자기 개발비
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="labtop" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="laptop" checked={welfare.laptop || false} onChange={onWelfareCheckBox} />
                   노트북 지원
                 </S.InputList>
                 <S.InputList>기타 (</S.InputList>
                 <S.InputList>
-                  <S.Input type="text" name="etc" onChange={onChangeInput} />)
+                  <S.Input type="text" name="etc" value={welfare.etc} onChange={onChangeInitData} />)
                 </S.InputList>
               </S.Container>
               <S.Container flex={true}>
@@ -379,19 +321,19 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.Span>식비지원</S.Span>
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="breakfast" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="breakfast" checked={meal.breakfast || false} onChange={onMealCheckBox} />
                   조식 제공
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="lunch" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="lunch" checked={meal.lunch || false} onChange={onMealCheckBox} />
                   중식 제공
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="dinner" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="dinner" checked={meal.dinner || false} onChange={onMealCheckBox} />
                   석식 제공
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="mealSalary" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="includeSalary" checked={meal.includeSalary || false} onChange={onMealCheckBox} />
                   수당 포함
                 </S.InputList>
               </S.Container>
@@ -403,61 +345,69 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 </S.InputList>
                 <S.InputLine
                   type="text"
+                  required
                   placeholder="(직급)"
                   name="managerRank"
-                  onChange={onChangeInput}
-                  style={{ borderBottomColor: (!managerRank || error === "managerRank") && status === true ? "red" : "#e2e2e2" }}
+                  value={manager.managerRank}
+                  onChange={onChangeManager}
+                  style={{ borderBottomColor: error === "managerRank" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 <S.InputLine
                   type="text"
+                  required
                   placeholder="(담당자 이름)"
                   name="managerName"
-                  onChange={onChangeInput}
-                  style={{ borderBottomColor: (!managerName || error === "managerName") && status === true ? "red" : "#e2e2e2" }}
+                  value={manager.managerName}
+                  onChange={onChangeManager}
+                  style={{ borderBottomColor: error === "managerName" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 <S.InputLine
                   type="text"
+                  required
                   placeholder="(이메일)"
                   name="managerEmail"
-                  onChange={onChangeInput}
-                  style={{
-                    borderBottomColor:
-                      (!managerEmail ||
-                        // eslint-disable-next-line
-                        !/^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/.test(managerEmail) ||
-                        error === "managerEmail") &&
-                      status === true
-                        ? "red"
-                        : "#e2e2e2",
-                  }}
+                  value={manager.managerEmail}
+                  onChange={onChangeManager}
+                  style={{ borderBottomColor: error === "managerEmail" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 <S.InputLine
                   type="text"
+                  required
                   placeholder="(전화번호) - 없이 입력"
                   name="managerPhone"
-                  onChange={onChangeInput}
-                  style={{ borderBottomColor: (!managerPhone || error === "managerPhone") && status === true ? "red" : "#e2e2e2" }}
+                  value={manager.managerPhone}
+                  onChange={onChangeManager}
+                  style={{ borderBottomColor: error === "managerPhone" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
               </S.Container>
               <S.Container flex={true}>
                 <S.InputList>
                   <S.Span>자격요건</S.Span>
-                  <S.InputLine type="text" name="certificates" onChange={onChangeInput} placeholder="(자격증)"></S.InputLine>
+                  <S.InputLine
+                    type="text"
+                    name="certificate"
+                    value={qualification.certificate}
+                    onChange={onChangeQualification}
+                    placeholder="(자격증)"
+                    style={{ borderBottomColor: error === "certificates" && status === true ? "red" : "#e2e2e2" }}
+                  ></S.InputLine>
                   <S.InputLine
                     type="text"
                     name="grade"
-                    onChange={onChangeInput}
+                    value={qualification.grade}
+                    onChange={onChangeQualification}
                     placeholder="(성적) 0~100 %이내"
-                    style={{ borderBottomColor: (grade > "100" || "0" > grade || error === "grade") && status === true ? "red" : "#e2e2e2" }}
+                    style={{ borderBottomColor: error === "grade" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.CustomInputLine
                     type="text"
                     name="specialty"
                     maxLength={60}
                     width={"25"}
-                    onChange={onChangeInput}
-                    style={{ borderBottomColor: error === "specialty" && status === true ? "red" : "#e2e2e2" }}
+                    value={qualification.specialty}
+                    onChange={onChangeQualification}
                     placeholder="(특기사항)"
+                    style={{ borderBottomColor: error === "specialty" && status === true ? "red" : "#e2e2e2" }}
                   ></S.CustomInputLine>
                 </S.InputList>
               </S.Container>
@@ -467,9 +417,11 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.Span>실습수당 (월)</S.Span>
                   <S.InputLine
                     type="text"
+                    required
                     name="allowance"
-                    onChange={onChangeInput}
-                    style={{ borderBottomColor: (!allowance || error === "allowance") && status === true ? "red" : "#e2e2e2" }}
+                    value={workingData.allowance}
+                    onChange={onChangeWorkingConditions}
+                    style={{ borderBottomColor: error === "allowance" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>원</S.Span>
                 </S.InputList>
@@ -478,7 +430,8 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   <S.InputLine
                     type="text"
                     name="salary"
-                    onChange={onChangeInput}
+                    value={workingData.salary}
+                    onChange={onChangeWorkingConditions}
                     style={{ borderBottomColor: error === "salary" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span>원</S.Span>
@@ -491,24 +444,24 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 <S.Span>근무시간</S.Span>
                 <S.InputLine
                   type="text"
+                  required
                   name="startTime"
                   width="small"
-                  value={startTime}
-                  onChange={onChangeInput}
+                  value={entInfo.startTime}
+                  onChange={onChangeEntInfo}
                   placeholder="hh:mm"
-                  style={{
-                    borderBottomColor: (!startTime || startTime.length !== 5 || error === "startTime") && status === true ? "red" : "#e2e2e2",
-                  }}
+                  style={{ borderBottomColor: error === "startTime" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~
                 <S.InputLine
                   type="text"
+                  required
                   name="endTime"
                   width="small"
-                  value={endTime}
-                  onChange={onChangeInput}
+                  value={entInfo.endTime}
+                  onChange={onChangeEntInfo}
                   placeholder="hh:mm"
-                  style={{ borderBottomColor: (!endTime || endTime.length !== 5 || error === "endTime") && status === true ? "red" : "#e2e2e2" }}
+                  style={{ borderBottomColor: error === "endTime" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 까지
                 <S.DescriptionSpan>※청소년은 1일에 7시간, 1주에 35시간을 초과하여 일할 수 없습니다.</S.DescriptionSpan>
@@ -519,11 +472,12 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 <S.Span>실습기간</S.Span>
                 <S.InputLine
                   type="text"
+                  required
                   name="period"
                   width="small"
-                  value={period}
-                  onChange={onChangeInput}
-                  style={{ borderBottomColor: (period > 3 || isNaN(period) || !period || error === "period") && status === true ? "red" : "#e2e2e2" }}
+                  value={workingData.period}
+                  onChange={onChangeWorkingConditions}
+                  style={{ borderBottomColor: error === "period" && status === true ? "red" : "#e2e2e2" }}
                 ></S.InputLine>
                 <S.Span>개월</S.Span>
                 <S.DescriptionSpan>※ 실습기간은 최대 3개월 입니다</S.DescriptionSpan>
@@ -536,35 +490,35 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                   </S.InputList>
                   <S.InputLine
                     type="text"
+                    required
                     width="small"
-                    name="deadlineYear"
+                    name="year"
                     placeholder="xxxx"
-                    onChange={onChangeInput}
-                    style={{
-                      borderBottomColor: (!deadlineYear || deadlineYear.length !== 4 || error === "deadline") && status === true ? "red" : "#e2e2e2",
-                    }}
+                    value={deadline.year}
+                    onChange={onChangeDeadlineData}
+                    style={{ borderBottomColor: error === "deadline" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span point={false}>년</S.Span>
                   <S.InputLine
                     type="text"
+                    required
                     width="small"
-                    name="deadlineMonth"
+                    name="month"
                     placeholder="xx"
-                    onChange={onChangeInput}
-                    style={{
-                      borderBottomColor: (!deadlineMonth || error === "deadline") && status === true ? "red" : "#e2e2e2",
-                    }}
+                    value={deadline.month}
+                    onChange={onChangeDeadlineData}
+                    style={{ borderBottomColor: error === "deadline" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span point={false}>월</S.Span>
                   <S.InputLine
                     type="text"
                     width="small"
-                    name="deadlineDate"
+                    required
+                    name="day"
                     placeholder="xx"
-                    onChange={onChangeInput}
-                    style={{
-                      borderBottomColor: (!deadlineDate || error === "deadline") && status === true ? "red" : "#e2e2e2",
-                    }}
+                    value={deadline.day}
+                    onChange={onChangeDeadlineData}
+                    style={{ borderBottomColor: error === "deadline" && status === true ? "red" : "#e2e2e2" }}
                   ></S.InputLine>
                   <S.Span point={false}>일</S.Span>
                 </S.Container>
@@ -574,17 +528,24 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
                 <S.Span>첨부파일</S.Span>
                 <S.Input type="file" name="file" onChange={onFile}></S.Input>
               </S.InputList>
+
               <S.Container flex={true}>
                 <S.InputList>
                   <S.Span point={true}>*</S.Span>
                   <S.Span>실습 후 채용 계획</S.Span>
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" name="recruitPlan" onChange={onCheckBoxInput} />
+                  <S.Input type="checkbox" name="recruitPlan" checked={other.recruitPlan || false} onChange={onReception} />
                   결격사유 없을 시 전원채용
                 </S.InputList>
                 <S.InputList>
-                  <S.Input type="checkbox" />
+                  <S.Input
+                    type="checkbox"
+                    name="notRecruitPlan"
+                    id="recruitPlan"
+                    checked={other.recruitPlan === false ? true : false}
+                    onChange={onReception}
+                  />
                   평가 후 일부 채용
                 </S.InputList>
               </S.Container>
@@ -594,7 +555,7 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
             <Link to="/employ">
               <S.CancelButton>취소</S.CancelButton>
             </Link>
-            <S.NextButton onClick={onSubmitRecruit}>등록하기</S.NextButton>
+            <S.NextButton onClick={onSubmitData}>등록하기</S.NextButton>
           </S.ButtonContainer>
         </S.Container>
       </S.AllContainer>
@@ -602,4 +563,4 @@ const RecruitNotice: React.FC<RecruitNoticeProps> = ({ onRecruit, onFileRecruit,
   );
 };
 
-export default RecruitNotice;
+export default UpdateRecruit;

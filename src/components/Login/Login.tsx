@@ -1,30 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./Login.style";
 import { loginImg } from "../../assets/img";
 interface LoginProps {
-  onLogin: (id: string, password: string) => void;
+  onSubmitLogin: () => void;
+  onKeyPressLogin: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputs: { id: string; password: string };
 }
 
-const Login = ({ onLogin }: LoginProps) => {
-  const onSubmitLogin = () => onLogin(id, password);
-  const [inputs, setInputs] = useState({
-    id: "",
-    password: "",
-  });
-  const { id, password } = inputs;
-
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
-
-  const onKeyPressLogin = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") onSubmitLogin();
-  };
-
+const Login = ({ onSubmitLogin, onKeyPressLogin, onChangeInput, inputs }: LoginProps) => {
   return (
     <S.LoginContainer>
       <S.LoginImg src={loginImg}></S.LoginImg>
@@ -32,19 +16,17 @@ const Login = ({ onLogin }: LoginProps) => {
         <S.Title>LOGIN</S.Title>
         <S.DescriptionText>Welcome to JobITs</S.DescriptionText>
         <S.Text>Log in to JobITs and use various features.</S.Text>
-        <form>
-          <S.Input placeholder="id" autoComplete="username" name="id" onChange={onChangeInput}></S.Input>
-          <S.Input
-            placeholder="password"
-            autoComplete="current-password"
-            name="password"
-            onChange={onChangeInput}
-            value={password}
-            type="password"
-            onKeyPress={onKeyPressLogin}
-          ></S.Input>
-        </form>
-        <S.Button onClick={onSubmitLogin}>login</S.Button>
+        <S.Input placeholder="id" autoComplete="username" name="id" value={inputs.id} onChange={onChangeInput} onKeyPress={onKeyPressLogin}></S.Input>
+        <S.Input
+          placeholder="password"
+          autoComplete="current-password"
+          name="password"
+          onChange={onChangeInput}
+          value={inputs.password}
+          type="password"
+          onKeyPress={onKeyPressLogin}
+        ></S.Input>
+        <S.Button onClick={onSubmitLogin}>Login</S.Button>
       </S.Container>
     </S.LoginContainer>
   );

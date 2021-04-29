@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import * as S from "./EmployRequest.style";
 import PageTemplate from "../Common/PageTemplate/PageTemplate";
@@ -16,22 +16,10 @@ interface EmployRequestProps {
 }
 
 const EmployRequest = ({ recruitList, nextPage, prevPage, onPageNum, text, page, onRemove }: EmployRequestProps) => {
-  const [selected, setSelected] = useState(0);
-  const onNextPage = () => {
-    nextPage();
-    setSelected(page + 1);
-  };
-  const onPrevPage = () => {
-    prevPage();
-    setSelected(page - 1);
-  };
+  const onNextPage = () => nextPage();
+  const onPrevPage = () => prevPage();
   let pageNum = page < 3 ? [1, 2, 3, 4, 5] : [page - 2, page - 1, page, page + 1, page + 2];
-
-  const onPageNumber = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { innerText } = e.currentTarget;
-    onPageNum(Number(innerText));
-    setSelected(Number(innerText) - 1);
-  };
+  const onPageNumber = (p: number) => onPageNum(p);
 
   return (
     <PageTemplate>
@@ -61,9 +49,9 @@ const EmployRequest = ({ recruitList, nextPage, prevPage, onPageNum, text, page,
           </S.PageNationItem>
           {pageNum.map((p: number, index: number) => (
             <S.PageNationItem
-              onClick={onPageNumber}
+              onClick={() => onPageNumber(p)}
               key={index}
-              style={{ backgroundColor: index === selected ? "#349a07" : "", color: index === selected ? "white" : "" }}
+              style={{ backgroundColor: p === page + 1 ? "#349a07" : "", color: p === page + 1 ? "white" : "" }}
             >
               {p}
             </S.PageNationItem>
@@ -73,14 +61,6 @@ const EmployRequest = ({ recruitList, nextPage, prevPage, onPageNum, text, page,
           </S.PageNationItem>
         </S.PageNationBox>
         <S.Container>
-          <Link
-            style={{ textDecoration: "none" }}
-            to={{
-              pathname: `/save`,
-            }}
-          >
-            <S.SaveButton>임시저장 보기</S.SaveButton>
-          </Link>
 
           <Link
             style={{ textDecoration: "none" }}

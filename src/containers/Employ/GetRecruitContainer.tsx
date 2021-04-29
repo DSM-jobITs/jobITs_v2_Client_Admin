@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { entInfoObjectProps, workingObjectProps, mealProps, welfareProps, otherObjectProps } from "../../interfaces";
+import { entInfoObjectProps, WorkingObjectProps, MealProps, WelfareProps, OtherObjectProps } from "../../interfaces";
 import { DetailEmploy, Qualification, WorkingCondition, CompanyInformation, OtherInformation } from "../../components/DetailEmploy/index";
 import { getDetailRecruit } from "../../lib/api/recruit";
+import { ErrorToast } from "../../lib/toast";
 
 const GetRecruit = () => {
   const location = useLocation();
@@ -14,12 +15,12 @@ const GetRecruit = () => {
   const [workContent, setWorkContent] = useState("");
   const [certificate, setCertificate] = useState([]);
   const [grade, setGrade] = useState("");
-  const [specialty, setSpecialty] = useState([]);
-  const [workingConditions, setWorkingConditions] = useState<workingObjectProps>();
-  const [meal, setMeal] = useState<mealProps>();
-  const [welfare, setWelfare] = useState<welfareProps>();
+  const [specialty, setSpecialty] = useState("");
+  const [workingConditions, setWorkingConditions] = useState<WorkingObjectProps>();
+  const [meal, setMeal] = useState<MealProps>();
+  const [welfare, setWelfare] = useState<WelfareProps>();
   const [entInfo, setEntInfo] = useState<entInfoObjectProps>();
-  const [other, setOther] = useState<otherObjectProps>();
+  const [other, setOther] = useState<OtherObjectProps>();
   const [file, setFile] = useState([]);
 
   const getRecruit = () => {
@@ -32,7 +33,7 @@ const GetRecruit = () => {
         setWorkContent(res.data.workContent);
         setCertificate(res.data.qualification.certificate);
         setGrade(res.data.qualification.grade);
-        setSpecialty(res.data.qualification.speciality);
+        setSpecialty(res.data.qualification.specialty);
         setWorkingConditions(res.data.workingConditions);
         setMeal(res.data.workingConditions.meal);
         setWelfare(res.data.workingConditions.welfare);
@@ -40,8 +41,8 @@ const GetRecruit = () => {
         setOther(res.data.other);
         setFile(res.data.other.file);
       })
-      .catch((err) => {
-        console.log("error", err);
+      .catch(() => {
+        ErrorToast("데이터를 불러오는 데에 실패했습니다.");
       });
   };
 
