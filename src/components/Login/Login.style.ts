@@ -4,8 +4,8 @@ export const LoginContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height : 100vh;
-  background-color : #F5F5F5;
+  height: 100vh;
+  background-color: #f5f5f5;
 `;
 
 export const Container = styled.div`
@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   color: #3a801d;
-  margin-top : 0;
+  margin-top: 0;
 `;
 
 export const DescriptionText = styled.h3`
@@ -32,7 +32,7 @@ export const Input = styled.input`
   padding: 0.8rem 1.5rem;
   display: block;
   margin-bottom: 1.2rem;
-  outline : none;
+  outline: none;
 `;
 
 export const Button = styled.button`
@@ -59,7 +59,9 @@ export const Button = styled.button`
 `;
 
 export const LoginImg = styled.img`
-    width : 35rem;
-    height: 35rem;
-    margin-right : 5rem;
+  width: 35rem;
+  height: 35rem;
+  margin-right: 5rem;
 `;
+
+export const Form = styled.form``;

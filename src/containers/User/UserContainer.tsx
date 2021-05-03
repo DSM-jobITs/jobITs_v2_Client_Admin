@@ -1,31 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import Login from "../../components/Login/Login";
 import { login } from "../../lib/api/user";
 import { useHistory } from "react-router-dom";
 import { ErrorToast, SuccessToast } from "../../lib/toast";
+import useChangeInput from "../../lib/hooks/useChangeInput";
 
 const UserContainer = () => {
   const history = useHistory();
 
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useChangeInput({
     id: "",
     password: "",
   });
-
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
 
   const onKeyPressLogin = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") onSubmitLogin();
   };
 
   const onSubmitLogin = () => {
-    login({ id: inputs.id, password: inputs.password })
+    login(inputs)
       .then((res) => {
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
@@ -35,11 +28,12 @@ const UserContainer = () => {
       .catch(() => {
         ErrorToast("로그인에 실패하였습니다.");
       });
+    console.log(inputs);
   };
 
   return (
     <>
-      <Login onSubmitLogin={onSubmitLogin} onKeyPressLogin={onKeyPressLogin} onChangeInput={onChangeInput} inputs={inputs} />
+      <Login onSubmitLogin={onSubmitLogin} onKeyPressLogin={onKeyPressLogin} inputs={inputs} setInputs={setInputs} />
     </>
   );
 };
